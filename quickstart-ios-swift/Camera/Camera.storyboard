@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera-->
+        <scene sceneID="VNc-RQ-5uY">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="cng-Vf-Mgj" customClass="CameraViewController" customModule="quickstart_ios_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ziO-Vq-nh4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-4d-5HP" customClass="EffectPlayerView" customModule="BanubaSdk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bFy-4d-5HP" firstAttribute="trailing" secondItem="ziO-Vq-nh4" secondAttribute="trailing" id="5Lu-uD-fJJ"/>
+                            <constraint firstItem="bFy-4d-5HP" firstAttribute="leading" secondItem="ziO-Vq-nh4" secondAttribute="leading" id="Cnh-3v-tc9"/>
+                            <constraint firstItem="bFy-4d-5HP" firstAttribute="top" secondItem="ziO-Vq-nh4" secondAttribute="top" id="mK3-Lk-9eM"/>
+                            <constraint firstAttribute="bottom" secondItem="bFy-4d-5HP" secondAttribute="bottom" id="oZR-1Z-A7S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2nS-Hc-XUf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Camera" id="JKX-kn-tbS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="xFN-cC-r4S">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="closeCamera:" destination="cng-Vf-Mgj" id="bM9-yp-eNg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="effectView" destination="bFy-4d-5HP" id="cdP-Aq-Rkq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ka-C8-mXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1969.5652173913045" y="-382.33695652173918"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Qp-5q-Oby">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="HMo-jw-2dH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="r16-Z3-UXq"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MGw-3e-Jk0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cng-Vf-Mgj" kind="relationship" relationship="rootViewController" id="1PD-P1-70k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEG-Bv-Fs3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="-382"/>
+        </scene>
+    </scenes>
+</document>
