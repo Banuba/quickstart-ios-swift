@@ -1,5 +1,4 @@
 import UIKit
-import BanubaEffectPlayer
 import BanubaSdk
 
 class PhotosViewController: UIViewController {
@@ -7,10 +6,11 @@ class PhotosViewController: UIViewController {
     private let imagePicker = UIImagePickerController()
     private var sdkManager = BanubaSdkManager()
     @IBOutlet weak var galleryImage: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        sdkManager.setup(configuration: EffectPlayerConfinguration())
+        sdkManager.setup(configuration: EffectPlayerConfinguration(renderMode: .photo))
+        sdkManager.effectPlayer?.surfaceCreated(720, height: 1280)
         sdkManager.loadEffect("UnluckyWitch", synchronous: true)
         imagePicker.delegate = self
         imagePicker.allowsEditing = false

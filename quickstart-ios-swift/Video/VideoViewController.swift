@@ -23,12 +23,21 @@ class VideoViewController: UIViewController {
         videoProcessingIndicator.isHidden = true
         videoProcessing.delegate = self
         videoPickerVC.delegate = self
-        videoPickerVC.sourceType = .savedPhotosAlbum
+        videoPickerVC.sourceType = .photoLibrary
         videoPickerVC.mediaTypes = ["public.movie"]
         present(videoPickerVC, animated: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     deinit {
+        sdkManager.destroyEffectPlayer()
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func appMovedToBackground() {
+        videoProcessingIndicator.stopAnimating()
+        videoProcessingIndicator.isHidden = true
+        videoProcessing.cancelProcessing()
         sdkManager.destroyEffectPlayer()
     }
     
@@ -53,6 +62,7 @@ class VideoViewController: UIViewController {
 }
 
 extension VideoViewController {
+    
     @IBAction func openVideoButtonGotTapEvent(_ sender: Any) {
         present(videoPickerVC, animated: true)
     }

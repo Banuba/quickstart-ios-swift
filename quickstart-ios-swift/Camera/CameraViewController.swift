@@ -1,5 +1,4 @@
 import UIKit
-import BanubaEffectPlayer
 import BanubaSdk
 
 class CameraViewController: UIViewController {
@@ -17,7 +16,7 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         sdkManager.input.startCamera()
-        sdkManager.effectPlayer?.loadEffect("UnluckyWitch")
+        sdkManager.loadEffect("UnluckyWitch")
         sdkManager.startEffectPlayer()
     }
     
