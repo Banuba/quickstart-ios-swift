@@ -1,4 +1,4 @@
-Quick start examples for [Banuba SDK on iOS](https://docs.banuba.com/docs/ios/ios_getting_started).
+Quick start examples for integrating [Banuba SDK on iOS](https://docs.banuba.com/docs/ios/ios_getting_started) into Swift apps.
 
 # Getting Started
 
