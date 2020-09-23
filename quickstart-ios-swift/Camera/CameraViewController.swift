@@ -11,55 +11,54 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
-        effectView?.effectPlayer = sdkManager.effectPlayer
-        guard let effectView = self.effectView.layer as? CAEAGLLayer else { return }
-        sdkManager.setRenderTarget(layer: effectView, playerConfiguration: nil)
+        setUpRenderSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       super.viewWillAppear(animated)
-       changeRenderSizeAndOrientation()
-       sdkManager.input.startCamera()
-       sdkManager.loadEffect("UnluckyWitch", synchronous: true)
-       sdkManager.startEffectPlayer()
-     }
+        super.viewWillAppear(animated)
+        sdkManager.input.startCamera()
+        sdkManager.loadEffect("UnluckyWitch", synchronous: true)
+        sdkManager.startEffectPlayer()
+    }
     
     deinit {
         sdkManager.destroyEffectPlayer()
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-       changeRenderSizeAndOrientation()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        sdkManager.stopEffectPlayer()
+        sdkManager.removeRenderTarget()
+        coordinator.animateAlongsideTransition(in: effectView, animation: { (UIViewControllerTransitionCoordinatorContext) in
+            self.setUpRenderSize()
+        }, completion: nil)
     }
     
-    private func setUpNewRenderTarget() {
-       sdkManager.stopEffectPlayer()
-       sdkManager.removeRenderTarget()
-       guard let effectView = self.effectView.layer as? CAEAGLLayer else { return }
-       sdkManager.setRenderTarget(layer: effectView, playerConfiguration: nil)
-       sdkManager.startEffectPlayer()
+    private func setUpRenderTarget() {
+        guard let effectView = self.effectView.layer as? CAEAGLLayer else { return }
+        sdkManager.setRenderTarget(layer: effectView, playerConfiguration: nil)
+        sdkManager.startEffectPlayer()
     }
     
-    private func changeRenderSizeAndOrientation() {
-       switch UIDevice.current.orientation {
-       case .portrait:
-           config.orientation = .deg0
-           config.renderSize = CGSize(width: 720, height: 1280)
-           setUpNewRenderTarget()
-       case .portraitUpsideDown:
-           config.orientation = .deg0
-           config.renderSize = CGSize(width: 720, height: 1280)
-           setUpNewRenderTarget()
-       case .landscapeLeft:
-           config.orientation = .deg270
-           config.renderSize = CGSize(width: 1280, height: 720)
-           setUpNewRenderTarget()
-       case .landscapeRight:
-           config.orientation = .deg90
-           config.renderSize = CGSize(width: 1280, height: 720)
-           setUpNewRenderTarget()
-       default:
-           break
+    private func setUpRenderSize() {
+        switch UIApplication.shared.statusBarOrientation {
+        case .portrait:
+            config.orientation = .deg0
+            config.renderSize = CGSize(width: 720, height: 1280)
+            setUpRenderTarget()
+        case .portraitUpsideDown:
+            config.orientation = .deg180
+            config.renderSize = CGSize(width: 720, height: 1280)
+            setUpRenderTarget()
+        case .landscapeLeft:
+            config.orientation = .deg90
+            config.renderSize = CGSize(width: 1280, height: 720)
+            setUpRenderTarget()
+        case .landscapeRight:
+            config.orientation = .deg270
+            config.renderSize = CGSize(width: 1280, height: 720)
+            setUpRenderTarget()
+        default:
+            setUpRenderTarget()
         }
     }
     
