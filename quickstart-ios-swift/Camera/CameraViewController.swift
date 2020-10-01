@@ -4,8 +4,9 @@ import BanubaSdk
 class CameraViewController: UIViewController {
     
     @IBOutlet weak var effectView: EffectPlayerView!
+    
     private var sdkManager = BanubaSdkManager()
-    private let config = EffectPlayerConfinguration(renderMode: .video)
+    private let config = EffectPlayerConfiguration(renderMode: .video)
     
     override func viewDidLoad() {
         super.viewDidLoad()
