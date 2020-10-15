@@ -43,19 +43,19 @@ class CameraViewController: UIViewController {
     private func setUpRenderSize() {
         switch UIApplication.shared.statusBarOrientation {
         case .portrait:
-            config.orientation = .deg0
+            config.orientation = .deg90
             config.renderSize = CGSize(width: 720, height: 1280)
             setUpRenderTarget()
         case .portraitUpsideDown:
-            config.orientation = .deg180
+            config.orientation = .deg270
             config.renderSize = CGSize(width: 720, height: 1280)
             setUpRenderTarget()
         case .landscapeLeft:
-            config.orientation = .deg90
+            config.orientation = .deg180
             config.renderSize = CGSize(width: 1280, height: 720)
             setUpRenderTarget()
         case .landscapeRight:
-            config.orientation = .deg270
+            config.orientation = .deg0
             config.renderSize = CGSize(width: 1280, height: 720)
             setUpRenderTarget()
         default:
