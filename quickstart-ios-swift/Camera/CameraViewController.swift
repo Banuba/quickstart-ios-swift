@@ -30,6 +30,7 @@ class CameraViewController: UIViewController {
         sdkManager.stopEffectPlayer()
         sdkManager.removeRenderTarget()
         coordinator.animateAlongsideTransition(in: effectView, animation: { (UIViewControllerTransitionCoordinatorContext) in
+            self.sdkManager.autoRotationEnabled = true
             self.setUpRenderSize()
         }, completion: nil)
     }
@@ -45,6 +46,7 @@ class CameraViewController: UIViewController {
         case .portrait:
             config.orientation = .deg90
             config.renderSize = CGSize(width: 720, height: 1280)
+            sdkManager.autoRotationEnabled = false
             setUpRenderTarget()
         case .portraitUpsideDown:
             config.orientation = .deg270
