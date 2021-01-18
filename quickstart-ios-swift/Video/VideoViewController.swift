@@ -89,7 +89,7 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         let glView = createEffectPlayerView(videoNaturalSize: videoNaturalSize)
         sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .video))
         sdkManager.setRenderTarget(layer: glView.layer as! CAEAGLLayer, playerConfiguration: nil)
-        sdkManager.loadEffect("UnluckyWitch", synchronous: true)
+        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
         sdkManager.startVideoProcessing(width: UInt(videoNaturalSize.width), height: UInt(videoNaturalSize.height))
         videoProcessing.startProcessing(url: url)
     }

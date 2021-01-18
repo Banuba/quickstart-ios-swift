@@ -12,7 +12,7 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .photo))
         sdkManager.effectPlayer?.surfaceCreated(720, height: 1280)
-        sdkManager.loadEffect("UnluckyWitch", synchronous: true)
+        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary

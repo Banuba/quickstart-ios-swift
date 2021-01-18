@@ -18,7 +18,7 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sdkManager.input.startCamera()
-        sdkManager.loadEffect("UnluckyWitch", synchronous: true)
+        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
         sdkManager.startEffectPlayer()
     }
     
