@@ -3,8 +3,8 @@ Quick start examples for integrating [Banuba SDK on iOS](https://docs.banuba.com
 # Getting Started
 
 1. Get the latest Banuba SDK archive for iOS and the client token. Please fill in our form on [form on banuba.com](https://www.banuba.com/face-filters-sdk) website, or contact us via [info@banuba.com](mailto:info@banuba.com).
-2. Copy `BanubaEffectPlayer.framework` and `BanubaSdk` project folder from the Banuba SDK archive into `Frameworks` dir:
-    `BNBEffectPlayer/bin/BanubaEffectPlayer.framework` => `quickstart-ios-swift/Frameworks/`
+2. Copy `BanubaEffectPlayer.xcframework` and `BanubaSdk` project folder from the Banuba SDK archive into `Frameworks` dir:
+    `BNBEffectPlayer/bin/BanubaEffectPlayer.xcframework` => `quickstart-ios-swift/Frameworks/`
     `BNBEffectPlayer/src/BanubaSdk/BanubaSdk/BanubaSdk` => `quickstart-ios-swift/Frameworks/`
     `BNBEffectPlayer/src/BanubaSdk/BanubaSdk/BanubaSdk.xcodeproj` => `quickstart-ios-swift/Frameworks/`
 3. Copy and Paste your client token into appropriate section of `quickstart-ios-swift/quickstart-ios-swift/BanubaClientToken.swift`
