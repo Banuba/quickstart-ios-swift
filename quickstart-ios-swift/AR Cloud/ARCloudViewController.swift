@@ -12,7 +12,7 @@ class ARCloudViewController: UIViewController {
     private var sdkManager = BanubaSdkManager()
     private let config = EffectPlayerConfiguration(renderMode: .video)
     
-    var effectUrl = "EyeGlasses" {
+    var effectUrl = "UnluckyWitch" {
         willSet(newEffect) {
             self.loadEffect(effectUrl: newEffect)
         }
