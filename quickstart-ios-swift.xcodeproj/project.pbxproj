@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1315CE4F25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */; };
 		1315CE5025B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1315CE5925B5B5D9002ED0D6 /* BanubaSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315CE5725B5B5D3002ED0D6 /* BanubaSdk.framework */; };
-		1315CE5A25B5B5D9002ED0D6 /* BanubaSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1315CE5725B5B5D3002ED0D6 /* BanubaSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		705AB5C6242A1A310009C570 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705AB5C5242A1A310009C570 /* Video.storyboard */; };
 		705AB5C9242A1ADD0009C570 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705AB5C8242A1ADD0009C570 /* Camera.storyboard */; };
 		705AB5CC242A1B620009C570 /* Photos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705AB5CB242A1B620009C570 /* Photos.storyboard */; };
@@ -21,6 +19,18 @@
 		70EA556223F2D23F00D3B4DB /* BanubaClientToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA556123F2D23F00D3B4DB /* BanubaClientToken.swift */; };
 		70EA556423F2D30600D3B4DB /* effects in Resources */ = {isa = PBXBuildFile; fileRef = 70EA556323F2D30600D3B4DB /* effects */; };
 		70EA556A23F2D78100D3B4DB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 70EA556923F2D78100D3B4DB /* README.md */; };
+		835CCF2E25CD9EF500EB133D /* BanubaSdk in Resources */ = {isa = PBXBuildFile; fileRef = 835CCF2D25CD9EF500EB133D /* BanubaSdk */; };
+		835CCF3825CD9F2900EB133D /* BanubaSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835CCF3525CD9F0700EB133D /* BanubaSdk.framework */; };
+		835CCF3925CD9F2900EB133D /* BanubaSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 835CCF3525CD9F0700EB133D /* BanubaSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		835CCF4625CDA04800EB133D /* ARCloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4525CDA04800EB133D /* ARCloudManager.swift */; };
+		835CCF4925CDA06900EB133D /* EffectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4825CDA06900EB133D /* EffectDataManager.swift */; };
+		835CCF4C25CDA07F00EB133D /* EffectDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4B25CDA07F00EB133D /* EffectDataProvider.swift */; };
+		835CCF5325CDA0C700EB133D /* ARCloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4F25CDA0C700EB133D /* ARCloudViewController.swift */; };
+		835CCF5425CDA0C700EB133D /* AREffectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF5025CDA0C700EB133D /* AREffectModel.swift */; };
+		835CCF5525CDA0C700EB133D /* ARCloud.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 835CCF5125CDA0C700EB133D /* ARCloud.storyboard */; };
+		835CCF5625CDA0C700EB133D /* EffectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF5225CDA0C700EB133D /* EffectCollectionViewCell.swift */; };
+		835CCF5D25CDA22600EB133D /* BanubaARCloudSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835CCF5825CDA1C000EB133D /* BanubaARCloudSDK.xcframework */; };
+		835CCF5E25CDA22600EB133D /* BanubaARCloudSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 835CCF5825CDA1C000EB133D /* BanubaARCloudSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A6FD78D23FD75CA005F5D14 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6FD78323FD75C9005F5D14 /* VideoViewController.swift */; };
 		8A6FD79023FD75CA005F5D14 /* VideoProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6FD78623FD75C9005F5D14 /* VideoProcessing.swift */; };
 		BA53DC11243E13FD0099399E /* quickstart_ios_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53DC10243E13FD0099399E /* quickstart_ios_swiftUITests.swift */; };
@@ -28,9 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1315CE5625B5B5D3002ED0D6 /* PBXContainerItemProxy */ = {
+		835CCF3425CD9F0700EB133D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1315CE5225B5B5D3002ED0D6 /* BanubaSdk.xcodeproj */;
+			containerPortal = 835CCF3025CD9F0700EB133D /* BanubaSdk.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 57AB757820FF4A240013C11F;
 			remoteInfo = BanubaSdk;
@@ -51,8 +61,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1315CE5A25B5B5D9002ED0D6 /* BanubaSdk.framework in Embed Frameworks */,
+				835CCF5E25CDA22600EB133D /* BanubaARCloudSDK.xcframework in Embed Frameworks */,
 				1315CE5025B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework in Embed Frameworks */,
+				835CCF3925CD9F2900EB133D /* BanubaSdk.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,7 +72,6 @@
 
 /* Begin PBXFileReference section */
 		1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BanubaEffectPlayer.xcframework; path = Frameworks/BanubaEffectPlayer.xcframework; sourceTree = "<group>"; };
-		1315CE5225B5B5D3002ED0D6 /* BanubaSdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BanubaSdk.xcodeproj; path = Frameworks/BanubaSdk/BanubaSdk.xcodeproj; sourceTree = "<group>"; };
 		705AB5C5242A1A310009C570 /* Video.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Video.storyboard; sourceTree = "<group>"; };
 		705AB5C8242A1ADD0009C570 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		705AB5CB242A1B620009C570 /* Photos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photos.storyboard; sourceTree = "<group>"; };
@@ -74,6 +84,16 @@
 		70EA556123F2D23F00D3B4DB /* BanubaClientToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanubaClientToken.swift; sourceTree = "<group>"; };
 		70EA556323F2D30600D3B4DB /* effects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = effects; sourceTree = "<group>"; };
 		70EA556923F2D78100D3B4DB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		835CCF2D25CD9EF500EB133D /* BanubaSdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BanubaSdk; path = Frameworks/BanubaSdk; sourceTree = "<group>"; };
+		835CCF3025CD9F0700EB133D /* BanubaSdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BanubaSdk.xcodeproj; path = Frameworks/BanubaSdk.xcodeproj; sourceTree = "<group>"; };
+		835CCF4525CDA04800EB133D /* ARCloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCloudManager.swift; sourceTree = "<group>"; };
+		835CCF4825CDA06900EB133D /* EffectDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectDataManager.swift; sourceTree = "<group>"; };
+		835CCF4B25CDA07F00EB133D /* EffectDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectDataProvider.swift; sourceTree = "<group>"; };
+		835CCF4F25CDA0C700EB133D /* ARCloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCloudViewController.swift; sourceTree = "<group>"; };
+		835CCF5025CDA0C700EB133D /* AREffectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AREffectModel.swift; sourceTree = "<group>"; };
+		835CCF5125CDA0C700EB133D /* ARCloud.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ARCloud.storyboard; sourceTree = "<group>"; };
+		835CCF5225CDA0C700EB133D /* EffectCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectCollectionViewCell.swift; sourceTree = "<group>"; };
+		835CCF5825CDA1C000EB133D /* BanubaARCloudSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BanubaARCloudSDK.xcframework; path = Frameworks/BanubaARCloudSDK.xcframework; sourceTree = "<group>"; };
 		8A6FD78323FD75C9005F5D14 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		8A6FD78623FD75C9005F5D14 /* VideoProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoProcessing.swift; sourceTree = "<group>"; };
 		BA53DC0E243E13FD0099399E /* quickstart-ios-swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "quickstart-ios-swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +107,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1315CE5925B5B5D9002ED0D6 /* BanubaSdk.framework in Frameworks */,
+				835CCF5D25CDA22600EB133D /* BanubaARCloudSDK.xcframework in Frameworks */,
 				1315CE4F25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework in Frameworks */,
+				835CCF3825CD9F2900EB133D /* BanubaSdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,14 +123,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1315CE5325B5B5D3002ED0D6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1315CE5725B5B5D3002ED0D6 /* BanubaSdk.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		705AB5C7242A1AC90009C570 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +170,8 @@
 				705AB5C7242A1AC90009C570 /* Camera */,
 				705AB5CA242A1B4B0009C570 /* Photos */,
 				8A6FD79623FD7D08005F5D14 /* Video */,
+				835CCF4E25CDA0AE00EB133D /* AR Cloud */,
+				835CCF4225CDA01700EB133D /* Managers */,
 				70EA556323F2D30600D3B4DB /* effects */,
 				70EA554623F2C91100D3B4DB /* Info.plist */,
 			);
@@ -166,10 +181,57 @@
 		70EA555B23F2D0CB00D3B4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1315CE5225B5B5D3002ED0D6 /* BanubaSdk.xcodeproj */,
+				835CCF5825CDA1C000EB133D /* BanubaARCloudSDK.xcframework */,
+				835CCF3025CD9F0700EB133D /* BanubaSdk.xcodeproj */,
+				835CCF2D25CD9EF500EB133D /* BanubaSdk */,
 				1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		835CCF3125CD9F0700EB133D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				835CCF3525CD9F0700EB133D /* BanubaSdk.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		835CCF4225CDA01700EB133D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				835CCF4425CDA03600EB133D /* DataManager */,
+				835CCF4325CDA02A00EB133D /* ARCloudManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		835CCF4325CDA02A00EB133D /* ARCloudManager */ = {
+			isa = PBXGroup;
+			children = (
+				835CCF4525CDA04800EB133D /* ARCloudManager.swift */,
+			);
+			path = ARCloudManager;
+			sourceTree = "<group>";
+		};
+		835CCF4425CDA03600EB133D /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				835CCF4825CDA06900EB133D /* EffectDataManager.swift */,
+				835CCF4B25CDA07F00EB133D /* EffectDataProvider.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		835CCF4E25CDA0AE00EB133D /* AR Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				835CCF5125CDA0C700EB133D /* ARCloud.storyboard */,
+				835CCF4F25CDA0C700EB133D /* ARCloudViewController.swift */,
+				835CCF5025CDA0C700EB133D /* AREffectModel.swift */,
+				835CCF5225CDA0C700EB133D /* EffectCollectionViewCell.swift */,
+			);
+			path = "AR Cloud";
 			sourceTree = "<group>";
 		};
 		8A6FD79623FD7D08005F5D14 /* Video */ = {
@@ -263,8 +325,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 1315CE5325B5B5D3002ED0D6 /* Products */;
-					ProjectRef = 1315CE5225B5B5D3002ED0D6 /* BanubaSdk.xcodeproj */;
+					ProductGroup = 835CCF3125CD9F0700EB133D /* Products */;
+					ProjectRef = 835CCF3025CD9F0700EB133D /* BanubaSdk.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -276,11 +338,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		1315CE5725B5B5D3002ED0D6 /* BanubaSdk.framework */ = {
+		835CCF3525CD9F0700EB133D /* BanubaSdk.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = BanubaSdk.framework;
-			remoteRef = 1315CE5625B5B5D3002ED0D6 /* PBXContainerItemProxy */;
+			remoteRef = 835CCF3425CD9F0700EB133D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -293,6 +355,8 @@
 				705AB5CC242A1B620009C570 /* Photos.storyboard in Resources */,
 				705AB5C9242A1ADD0009C570 /* Camera.storyboard in Resources */,
 				705AB5C6242A1A310009C570 /* Video.storyboard in Resources */,
+				835CCF5525CDA0C700EB133D /* ARCloud.storyboard in Resources */,
+				835CCF2E25CD9EF500EB133D /* BanubaSdk in Resources */,
 				70EA554023F2C90A00D3B4DB /* Main.storyboard in Resources */,
 				70EA556A23F2D78100D3B4DB /* README.md in Resources */,
 				70EA556423F2D30600D3B4DB /* effects in Resources */,
@@ -313,10 +377,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835CCF4C25CDA07F00EB133D /* EffectDataProvider.swift in Sources */,
+				835CCF4625CDA04800EB133D /* ARCloudManager.swift in Sources */,
 				70EA556223F2D23F00D3B4DB /* BanubaClientToken.swift in Sources */,
 				70EA555023F2C9D000D3B4DB /* CameraViewController.swift in Sources */,
+				835CCF5425CDA0C700EB133D /* AREffectModel.swift in Sources */,
+				835CCF5625CDA0C700EB133D /* EffectCollectionViewCell.swift in Sources */,
 				8A6FD78D23FD75CA005F5D14 /* VideoViewController.swift in Sources */,
+				835CCF4925CDA06900EB133D /* EffectDataManager.swift in Sources */,
 				8A6FD79023FD75CA005F5D14 /* VideoProcessing.swift in Sources */,
+				835CCF5325CDA0C700EB133D /* ARCloudViewController.swift in Sources */,
 				70EA553923F2C90A00D3B4DB /* AppDelegate.swift in Sources */,
 				70EA555223F2C9E800D3B4DB /* PhotosViewController.swift in Sources */,
 			);
@@ -472,7 +542,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8W9QCBMQCU;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,7 +568,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8W9QCBMQCU;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
