@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let deviceDocumentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last?.path
 
         BanubaSdkManager.initialize(
-            resourcePath: [Bundle.main.bundlePath + "/effects", deviceDocumentsPath! + "/Effects"],
+            resourcePath: [Bundle.main.bundlePath + "/effects", deviceDocumentsPath! + "/Effects/"],
             clientTokenString: banubaClientToken)
         return true
     }

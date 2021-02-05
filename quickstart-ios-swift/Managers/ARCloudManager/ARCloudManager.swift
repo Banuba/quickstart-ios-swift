@@ -9,43 +9,46 @@
 import Foundation
 import BanubaARCloudSDK
 
-class ARCloudManager {
+struct ARCloudManager {
     
     fileprivate static let banubaARCloud = BanubaARCloud(uuidString: cloudMasksToken)
 
-    static func fetchAREffects(complition: @escaping ([AREffectModel]) -> ()) {
-        DispatchQueue.global(qos: .userInitiated).async {
+    static func fetchAREffects(completion: @escaping ([AREffectModel]) -> Void) {
+        DispatchQueue.global(qos: .userInteractive).async {
             var array: [AREffectModel] = []
 
-            ARCloudManager.banubaARCloud.getAREffects {(effectsArray, _) in
+            banubaARCloud.getAREffects {(effectsArray, _) in
                 effectsArray?.forEach({ effect in
-                    let effectModel = AREffectModel(title: effect.title,
-                                                    previewImage: effect.previewImage.absoluteString)
+                    let effectModel = AREffectModel(
+                        title: effect.title,
+                        previewImage: effect.previewImage.absoluteString)
                     array.append(effectModel)
                 })
                 
                 DispatchQueue.main.async {
-                    complition(array)
+                    completion(array)
                 }
             }
         }
     }
     
-    static func loadTappedEffect(effectName: String, complition: @escaping (URL) -> ()) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            ARCloudManager.banubaARCloud.getAREffects {(effectsArray, _) in
+    static func loadTappedEffect(effectName: String, completion: @escaping (URL) -> Void) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            banubaARCloud.getAREffects {(effectsArray, _) in
                 effectsArray?.forEach({ effect in
-                    if effectName == effect.title {
+                    guard effectName != effect.title else {
                         var currentProgress: Double?
                         banubaARCloud.downloadArEffect(effect) {(progress) in
                             currentProgress = progress
                         } completion: {(url, error) in
                             DispatchQueue.main.async {
-                                if currentProgress == 1.0 {
-                                    complition(url!)
+                                guard currentProgress != 1 else {
+                                    completion(url!)
+                                    return
                                 }
                             }
                         }
+                        return
                     }
                 })
             }

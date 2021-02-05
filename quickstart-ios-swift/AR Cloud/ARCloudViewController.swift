@@ -5,18 +5,12 @@ import BanubaEffectPlayer
 class ARCloudViewController: UIViewController {
     
     @IBOutlet weak var effectView: EffectPlayerView!
-    @IBOutlet var dataProvider: EffectDataProvider!
+    @IBOutlet weak var dataProvider: EffectDataProvider!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var sdkManager = BanubaSdkManager()
     private let config = EffectPlayerConfiguration(renderMode: .video)
-    
-    var effectUrl = "UnluckyWitch" {
-        willSet(newEffect) {
-            self.loadEffect(effectUrl: newEffect)
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +18,17 @@ class ARCloudViewController: UIViewController {
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
         setUpRenderSize()
+        addNotificationCenter()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.startAnimating()
         sdkManager.input.startCamera()
-        loadEffect(effectUrl: effectUrl)
+        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
         sdkManager.startEffectPlayer()
     }
 
-    private func loadEffect(effectUrl: String) {
-        _ = sdkManager.loadEffect(effectUrl, synchronous: true)
-    }
-
-    deinit {
-        sdkManager.destroyEffectPlayer()
-    }
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         sdkManager.stopEffectPlayer()
         sdkManager.removeRenderTarget()
@@ -50,17 +37,27 @@ class ARCloudViewController: UIViewController {
             self.setUpRenderSize()
         }, completion: nil)
     }
-    
+
+    deinit {
+        sdkManager.destroyEffectPlayer()
+        removeNotificationCenter()
+    }
+
+    private func loadEffect(newEffectName: String) {
+        _ = sdkManager.loadEffect(newEffectName, synchronous: true)
+    }
+
     private func loadEffectThumbs() {
         DispatchQueue.main.async {
-            ARCloudManager.fetchAREffects(complition: { array  in
+            ARCloudManager.fetchAREffects(completion: { [weak self] array  in
+                guard let self = self else { return }
                 self.dataProvider.dataManager.effectArray = array
                 self.collectionView.reloadData()
                 self.activityIndicator.stopAnimating()
             })
         }
     }
-    
+
     private func setUpRenderTarget() {
         guard let effectView = self.effectView.layer as? CAEAGLLayer else { return }
         sdkManager.setRenderTarget(layer: effectView, playerConfiguration: nil)
@@ -73,25 +70,44 @@ class ARCloudViewController: UIViewController {
             config.orientation = .deg90
             config.renderSize = CGSize(width: 720, height: 1280)
             sdkManager.autoRotationEnabled = false
-            setUpRenderTarget()
         case .portraitUpsideDown:
             config.orientation = .deg270
             config.renderSize = CGSize(width: 720, height: 1280)
-            setUpRenderTarget()
         case .landscapeLeft:
             config.orientation = .deg180
             config.renderSize = CGSize(width: 1280, height: 720)
-            setUpRenderTarget()
         case .landscapeRight:
             config.orientation = .deg0
             config.renderSize = CGSize(width: 1280, height: 720)
-            setUpRenderTarget()
         default:
-            setUpRenderTarget()
+            break
         }
+        setUpRenderTarget()
     }
     
     @IBAction func closeARCloud(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension ARCloudViewController {
+    private func addNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateEffect), name: Notification.Name.newEffectDidLoad, object: nil)
+    }
+
+    private func removeNotificationCenter() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.newEffectDidLoad, object: nil)
+    }
+
+    @objc private func updateEffect( _ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let id = dict["name"] as? String {
+                loadEffect(newEffectName: id)
+            }
+        }
+    }
+}
+
+extension Notification.Name {
+    static let newEffectDidLoad = NSNotification.Name("newEffectDidLoad")
 }

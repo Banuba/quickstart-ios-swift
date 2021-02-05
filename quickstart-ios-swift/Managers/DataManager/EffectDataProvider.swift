@@ -25,7 +25,8 @@ extension EffectDataProvider: UICollectionViewDataSource {
         let effect = self.dataManager.effectArray?[indexPath.item]
 
         DispatchQueue.global(qos: .userInitiated).async {
-            let imageData = try? Data(contentsOf: (URL(string: effect?.previewImage ?? "")!))
+            guard let url = URL(string: effect?.previewImage ?? "") else { return }
+            let imageData = try? Data(contentsOf: (url))
             var image: UIImage?
             DispatchQueue.main.async {
                 image = imageData != nil ? UIImage(data: imageData!) : UIImage()
@@ -44,9 +45,8 @@ extension EffectDataProvider: UICollectionViewDelegate {
         guard let effectName = effect?.title else { return }
 
         ARCloudManager.loadTappedEffect(effectName: effectName) { (effectUrl) in
-            let aRCloudViewController = ARCloudViewController()
             if effectUrl.absoluteString.contains(effectName) {
-                aRCloudViewController.effectUrl = effectName
+                NotificationCenter.default.post(name: Notification.Name.newEffectDidLoad, object: self, userInfo: ["name": effectName])
             }
         }
     }
