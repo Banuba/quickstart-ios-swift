@@ -57,7 +57,6 @@ class ARCloudViewController: UIViewController {
                 self.dataProvider.dataManager.effectArray = array
                 self.collectionView.reloadData()
                 self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
             })
         }
     }

@@ -9,8 +9,6 @@
 import Foundation
 import BanubaARCloudSDK
 
-import BanubaSdk
-
 class ARCloudManager {
     
     fileprivate static let banubaARCloud = BanubaARCloud(uuidString: cloudMasksToken)
