@@ -14,7 +14,7 @@ class ARCloudViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadEffectThumbs()
+        loadAREffectPreviewIcon()
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
         setUpRenderSize()
@@ -47,7 +47,7 @@ class ARCloudViewController: UIViewController {
         _ = sdkManager.loadEffect(newEffectName, synchronous: true)
     }
 
-    private func loadEffectThumbs() {
+    private func loadAREffectPreviewIcon() {
         DispatchQueue.main.async {
             ARCloudManager.fetchAREffects(completion: { [weak self] array  in
                 guard let self = self else { return }
@@ -92,7 +92,12 @@ class ARCloudViewController: UIViewController {
 
 extension ARCloudViewController {
     private func addNotificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateEffect), name: Notification.Name.newEffectDidLoad, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateEffect),
+            name: Notification.Name.newEffectDidLoad,
+            object: nil
+        )
     }
 
     private func removeNotificationCenter() {

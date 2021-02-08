@@ -170,7 +170,7 @@
 				705AB5C7242A1AC90009C570 /* Camera */,
 				705AB5CA242A1B4B0009C570 /* Photos */,
 				8A6FD79623FD7D08005F5D14 /* Video */,
-				835CCF4E25CDA0AE00EB133D /* AR Cloud */,
+				835CCF4E25CDA0AE00EB133D /* ARCloud */,
 				835CCF4225CDA01700EB133D /* Managers */,
 				70EA556323F2D30600D3B4DB /* effects */,
 				70EA554623F2C91100D3B4DB /* Info.plist */,
@@ -223,7 +223,7 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
-		835CCF4E25CDA0AE00EB133D /* AR Cloud */ = {
+		835CCF4E25CDA0AE00EB133D /* ARCloud */ = {
 			isa = PBXGroup;
 			children = (
 				835CCF5125CDA0C700EB133D /* ARCloud.storyboard */,
@@ -231,7 +231,7 @@
 				835CCF5025CDA0C700EB133D /* AREffectModel.swift */,
 				835CCF5225CDA0C700EB133D /* EffectCollectionViewCell.swift */,
 			);
-			path = "AR Cloud";
+			path = ARCloud;
 			sourceTree = "<group>";
 		};
 		8A6FD79623FD7D08005F5D14 /* Video */ = {

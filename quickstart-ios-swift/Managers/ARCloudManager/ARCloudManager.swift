@@ -1,17 +1,9 @@
-//
-//  ARCloudManager.swift
-//  quickstart-ios-swift
-//
-//  Created by Pavel Sakhanko on 05/02/2021.
-//  Copyright © 2021 Ivan Gulidov. All rights reserved.
-//
-
 import Foundation
 import BanubaARCloudSDK
 
 struct ARCloudManager {
     
-    fileprivate static let banubaARCloud = BanubaARCloud(uuidString: cloudMasksToken)
+    fileprivate static let banubaARCloud = BanubaARCloud(uuidString: clientCloudId)
 
     static func fetchAREffects(completion: @escaping ([AREffectModel]) -> Void) {
         DispatchQueue.global(qos: .userInteractive).async {
@@ -21,7 +13,7 @@ struct ARCloudManager {
                 effectsArray?.forEach({ effect in
                     let effectModel = AREffectModel(
                         title: effect.title,
-                        previewImage: effect.previewImage.absoluteString)
+                        previewImageStringUrl: effect.previewImage.absoluteString)
                     array.append(effectModel)
                 })
                 

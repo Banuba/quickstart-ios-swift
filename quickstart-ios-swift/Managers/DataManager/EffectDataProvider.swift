@@ -1,11 +1,3 @@
-//
-//  EffectDataProvider.swift
-//  quickstart-ios-swift
-//
-//  Created by Pavel Sakhanko on 05/02/2021.
-//  Copyright © 2021 Ivan Gulidov. All rights reserved.
-//
-
 import UIKit
 
 class EffectDataProvider: NSObject {
@@ -25,14 +17,13 @@ extension EffectDataProvider: UICollectionViewDataSource {
         let effect = self.dataManager.effectArray?[indexPath.item]
 
         DispatchQueue.global(qos: .userInitiated).async {
-            guard let url = URL(string: effect?.previewImage ?? "") else { return }
-            let imageData = try? Data(contentsOf: (url))
-            var image: UIImage?
-            DispatchQueue.main.async {
-                image = imageData != nil ? UIImage(data: imageData!) : UIImage()
+            guard let url = URL(string: effect?.previewImageStringUrl ?? ""),
+                  let imageData = try? Data(contentsOf: url)
+            else { return }
 
+            DispatchQueue.main.async {
                 cell.titleLabel.text = effect?.title
-                cell.previewImage.image = image
+                cell.previewImage.image = UIImage(data: imageData)
             }
         }
         return cell
