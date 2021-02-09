@@ -10,7 +10,7 @@ class ARCloudViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var sdkManager = BanubaSdkManager()
-    private let config = EffectPlayerConfiguration(renderMode: .video)
+    private let config = EffectPlayerConfiguration(renderMode: .video, renderContentMode: .resizeAspectFill)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,8 @@ class ARCloudViewController: UIViewController {
         super.viewWillAppear(animated)
         activityIndicator.startAnimating()
         sdkManager.input.startCamera()
-        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
         sdkManager.startEffectPlayer()
+        showCloudIdAlertIfNeeded()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -43,8 +43,20 @@ class ARCloudViewController: UIViewController {
         removeNotificationCenter()
     }
 
-    private func loadEffect(newEffectName: String) {
-        _ = sdkManager.loadEffect(newEffectName, synchronous: true)
+    private func downloadAREffect(newEffectName: String, synchronous: Bool) {
+        _ = sdkManager.loadEffect(newEffectName, synchronous: synchronous)
+    }
+
+    private func showCloudIdAlertIfNeeded() {
+        guard clientCloudId != "" else {
+            let alert = UIAlertController(
+                title: "Invalid Client Cloud Id",
+                message: "Please add Client Cloud Id in BanubaClientToken.swift!",
+                preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
     }
 
     private func loadAREffectPreviewIcon() {
@@ -107,7 +119,7 @@ extension ARCloudViewController {
     @objc private func updateEffect( _ notification: NSNotification) {
         if let dict = notification.userInfo as NSDictionary? {
             if let id = dict["name"] as? String {
-                loadEffect(newEffectName: id)
+                downloadAREffect(newEffectName: id, synchronous: true)
             }
         }
     }
