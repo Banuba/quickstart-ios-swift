@@ -113,7 +113,11 @@ extension ARCloudViewController {
     }
 
     private func removeNotificationCenter() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.newEffectDidLoad, object: nil)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: Notification.Name.newEffectDidLoad,
+            object: nil
+        )
     }
 
     @objc private func updateEffect( _ notification: NSNotification) {
