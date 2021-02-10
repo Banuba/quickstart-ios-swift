@@ -3,8 +3,9 @@ import BanubaSdk
 import BanubaEffectPlayer
 import BanubaARCloudSDK
 
-class ARCloudViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class ARCloudViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
+                             UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet weak var effectView: EffectPlayerView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
