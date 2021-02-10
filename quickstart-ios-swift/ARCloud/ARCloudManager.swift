@@ -2,7 +2,9 @@ import Foundation
 import BanubaARCloudSDK
 
 struct ARCloudManager {
-    
+
+    // Add your Client Cloud Id instead of empty quotes
+    static let clientCloudId = ""
     fileprivate static let banubaARCloud = BanubaARCloud(uuidString: clientCloudId)
 
     static func fetchAREffects(completion: @escaping ([AREffectModel]) -> Void) {
@@ -13,7 +15,7 @@ struct ARCloudManager {
                 effectsArray?.forEach({ effect in
                     let effectModel = AREffectModel(
                         title: effect.title,
-                        previewImageStringUrl: effect.previewImage.absoluteString)
+                        previewUrl: effect.previewImage.absoluteString)
                     array.append(effectModel)
                 })
                 

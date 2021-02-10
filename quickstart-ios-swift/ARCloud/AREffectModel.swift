@@ -2,10 +2,10 @@ import UIKit
 
 class AREffectModel {
     var title: String
-    var previewImageStringUrl: String
+    var previewUrl: String
     
-    init(title: String, previewImageStringUrl: String) {
+    init(title: String, previewUrl: String) {
         self.title = title
-        self.previewImageStringUrl = previewImageStringUrl
+        self.previewUrl = previewUrl
     }
 }

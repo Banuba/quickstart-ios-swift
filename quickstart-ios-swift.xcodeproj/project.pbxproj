@@ -23,8 +23,6 @@
 		835CCF3825CD9F2900EB133D /* BanubaSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835CCF3525CD9F0700EB133D /* BanubaSdk.framework */; };
 		835CCF3925CD9F2900EB133D /* BanubaSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 835CCF3525CD9F0700EB133D /* BanubaSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		835CCF4625CDA04800EB133D /* ARCloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4525CDA04800EB133D /* ARCloudManager.swift */; };
-		835CCF4925CDA06900EB133D /* EffectDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4825CDA06900EB133D /* EffectDataManager.swift */; };
-		835CCF4C25CDA07F00EB133D /* EffectDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4B25CDA07F00EB133D /* EffectDataProvider.swift */; };
 		835CCF5325CDA0C700EB133D /* ARCloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF4F25CDA0C700EB133D /* ARCloudViewController.swift */; };
 		835CCF5425CDA0C700EB133D /* AREffectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CCF5025CDA0C700EB133D /* AREffectModel.swift */; };
 		835CCF5525CDA0C700EB133D /* ARCloud.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 835CCF5125CDA0C700EB133D /* ARCloud.storyboard */; };
@@ -87,8 +85,6 @@
 		835CCF2D25CD9EF500EB133D /* BanubaSdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BanubaSdk; path = Frameworks/BanubaSdk; sourceTree = "<group>"; };
 		835CCF3025CD9F0700EB133D /* BanubaSdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BanubaSdk.xcodeproj; path = Frameworks/BanubaSdk.xcodeproj; sourceTree = "<group>"; };
 		835CCF4525CDA04800EB133D /* ARCloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCloudManager.swift; sourceTree = "<group>"; };
-		835CCF4825CDA06900EB133D /* EffectDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectDataManager.swift; sourceTree = "<group>"; };
-		835CCF4B25CDA07F00EB133D /* EffectDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectDataProvider.swift; sourceTree = "<group>"; };
 		835CCF4F25CDA0C700EB133D /* ARCloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCloudViewController.swift; sourceTree = "<group>"; };
 		835CCF5025CDA0C700EB133D /* AREffectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AREffectModel.swift; sourceTree = "<group>"; };
 		835CCF5125CDA0C700EB133D /* ARCloud.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ARCloud.storyboard; sourceTree = "<group>"; };
@@ -171,7 +167,6 @@
 				705AB5CA242A1B4B0009C570 /* Photos */,
 				8A6FD79623FD7D08005F5D14 /* Video */,
 				835CCF4E25CDA0AE00EB133D /* ARCloud */,
-				835CCF4225CDA01700EB133D /* Managers */,
 				70EA556323F2D30600D3B4DB /* effects */,
 				70EA554623F2C91100D3B4DB /* Info.plist */,
 			);
@@ -197,35 +192,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		835CCF4225CDA01700EB133D /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				835CCF4425CDA03600EB133D /* DataManager */,
-				835CCF4325CDA02A00EB133D /* ARCloudManager */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		835CCF4325CDA02A00EB133D /* ARCloudManager */ = {
-			isa = PBXGroup;
-			children = (
-				835CCF4525CDA04800EB133D /* ARCloudManager.swift */,
-			);
-			path = ARCloudManager;
-			sourceTree = "<group>";
-		};
-		835CCF4425CDA03600EB133D /* DataManager */ = {
-			isa = PBXGroup;
-			children = (
-				835CCF4825CDA06900EB133D /* EffectDataManager.swift */,
-				835CCF4B25CDA07F00EB133D /* EffectDataProvider.swift */,
-			);
-			path = DataManager;
-			sourceTree = "<group>";
-		};
 		835CCF4E25CDA0AE00EB133D /* ARCloud */ = {
 			isa = PBXGroup;
 			children = (
+				835CCF4525CDA04800EB133D /* ARCloudManager.swift */,
 				835CCF5125CDA0C700EB133D /* ARCloud.storyboard */,
 				835CCF4F25CDA0C700EB133D /* ARCloudViewController.swift */,
 				835CCF5025CDA0C700EB133D /* AREffectModel.swift */,
@@ -377,14 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				835CCF4C25CDA07F00EB133D /* EffectDataProvider.swift in Sources */,
 				835CCF4625CDA04800EB133D /* ARCloudManager.swift in Sources */,
 				70EA556223F2D23F00D3B4DB /* BanubaClientToken.swift in Sources */,
 				70EA555023F2C9D000D3B4DB /* CameraViewController.swift in Sources */,
 				835CCF5425CDA0C700EB133D /* AREffectModel.swift in Sources */,
 				835CCF5625CDA0C700EB133D /* EffectCollectionViewCell.swift in Sources */,
 				8A6FD78D23FD75CA005F5D14 /* VideoViewController.swift in Sources */,
-				835CCF4925CDA06900EB133D /* EffectDataManager.swift in Sources */,
 				8A6FD79023FD75CA005F5D14 /* VideoProcessing.swift in Sources */,
 				835CCF5325CDA0C700EB133D /* ARCloudViewController.swift in Sources */,
 				70EA553923F2C90A00D3B4DB /* AppDelegate.swift in Sources */,

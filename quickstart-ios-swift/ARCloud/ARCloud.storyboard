@@ -103,8 +103,8 @@
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
-                                            <outlet property="dataSource" destination="PRo-1S-s8l" id="fDb-BP-bcS"/>
-                                            <outlet property="delegate" destination="PRo-1S-s8l" id="EUl-wn-2yC"/>
+                                            <outlet property="dataSource" destination="dgs-HC-SvK" id="kSR-K7-XQm"/>
+                                            <outlet property="delegate" destination="dgs-HC-SvK" id="aST-kQ-Brz"/>
                                         </connections>
                                     </collectionView>
                                 </subviews>
@@ -138,12 +138,10 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Fqb-zJ-4CV" id="L7G-o0-Cdv"/>
                         <outlet property="collectionView" destination="RTK-dG-zTe" id="jy0-Vo-1xP"/>
-                        <outlet property="dataProvider" destination="PRo-1S-s8l" id="JJb-C8-J2K"/>
                         <outlet property="effectView" destination="hsj-6J-iT5" id="ccM-kM-gVh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4h-7F-jqI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="PRo-1S-s8l" customClass="EffectDataProvider" customModule="quickstart_ios_swift" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1969.5652173913045" y="-382.36607142857139"/>
         </scene>
