@@ -33,7 +33,7 @@ class ARCloudViewController: UIViewController, UICollectionViewDelegate, UIColle
         _ = sdkManager.loadEffect(newEffectName, synchronous: synchronous)
     }
 
-    // Show alert if Client Cloud Id is empty in ARCloudManager/clientCloudId
+    // Show alert if ARCloudManager.clientCloudId is empty
     private func showCloudIdAlertIfNeeded() {
         guard ARCloudManager.clientCloudId != "" else {
             let alert = UIAlertController(
