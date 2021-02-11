@@ -13,6 +13,7 @@ class CameraViewController: UIViewController {
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
         setUpRenderSize()
+        effectView?.effectPlayer = sdkManager.effectPlayer
     }
     
     override func viewWillAppear(_ animated: Bool) {
