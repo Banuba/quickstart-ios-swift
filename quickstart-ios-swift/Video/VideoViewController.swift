@@ -26,7 +26,12 @@ class VideoViewController: UIViewController {
         videoPickerVC.sourceType = .photoLibrary
         videoPickerVC.mediaTypes = ["public.movie"]
         present(videoPickerVC, animated: true)
-        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appMovedToBackground),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil
+        )
     }
     
     deinit {
