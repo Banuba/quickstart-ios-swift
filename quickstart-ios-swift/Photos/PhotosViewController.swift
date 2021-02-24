@@ -7,7 +7,7 @@ class PhotosViewController: UIViewController {
     
     private let imagePicker = UIImagePickerController()
     private var sdkManager = BanubaSdkManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .photo))
@@ -39,6 +39,17 @@ extension PhotosViewController: UINavigationControllerDelegate, UIImagePickerCon
             self.sdkManager.processImageData(pickedImage) { procImage in
                 DispatchQueue.main.async {
                     self.galleryImage.image = procImage
+                    let alert = UIAlertController(
+                        title: "Photo Processing",
+                        message: "Your photo is ready",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(
+                        title: "OK",
+                        style: .default,
+                        handler: nil)
+                    )
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }

@@ -114,5 +114,16 @@ extension VideoViewController: VideoProcessingDelegate {
         playerVC?.view.isHidden = false
         player.replaceCurrentItem(with: AVPlayerItem(url: url))
         player.play()
+        let alert = UIAlertController(
+            title: "Video Processing",
+            message: "Your video is ready",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil)
+        )
+        present(alert, animated: true, completion: nil)
     }
 }
