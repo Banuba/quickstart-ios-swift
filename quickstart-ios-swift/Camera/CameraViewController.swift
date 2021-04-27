@@ -13,13 +13,12 @@ class CameraViewController: UIViewController {
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
         setUpRenderSize()
-        effectView?.effectPlayer = sdkManager.effectPlayer
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sdkManager.input.startCamera()
-        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
+        _ = sdkManager.loadEffect("TrollGrandma", synchronous: true)
         sdkManager.startEffectPlayer()
     }
     
@@ -37,8 +36,7 @@ class CameraViewController: UIViewController {
     }
     
     private func setUpRenderTarget() {
-        guard let effectView = self.effectView.layer as? CAEAGLLayer else { return }
-        sdkManager.setRenderTarget(layer: effectView, playerConfiguration: nil)
+        sdkManager.setRenderTarget(view: effectView, playerConfiguration: nil)
         sdkManager.startEffectPlayer()
     }
     
