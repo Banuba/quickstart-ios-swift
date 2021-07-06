@@ -474,6 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				INFOPLIST_FILE = "quickstart-ios-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -496,6 +497,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				INFOPLIST_FILE = "quickstart-ios-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
