@@ -19,7 +19,7 @@ class PhotosViewController: UIViewController {
 
         // Run 1 draw call on 1x1 image to prepare render pipline
         sdkManager.processImageData(
-            UIImage(rgbaDataNoCopy: Data(count: 4) as NSData, width: 1, height: 1)!,
+            UIImage(bgraDataNoCopy: Data(count: 4) as NSData, width: 1, height: 1)!,
             completion: {(_: UIImage?) in})
             
         imagePicker.delegate = self
