@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13FC821A2637E4D600B80E53 /* BanubaSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13FC82172637E4C100B80E53 /* BanubaSdk.framework */; };
-		13FC821B2637E4D600B80E53 /* BanubaSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13FC82172637E4C100B80E53 /* BanubaSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7017ED7525EE6A5700CC9B33 /* BanubaEffectPlayer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */; };
 		7017ED7625EE6A5700CC9B33 /* BanubaEffectPlayer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		705AB5C6242A1A310009C570 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705AB5C5242A1A310009C570 /* Video.storyboard */; };
@@ -25,22 +23,24 @@
 		8A6FD79023FD75CA005F5D14 /* VideoProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6FD78623FD75C9005F5D14 /* VideoProcessing.swift */; };
 		BA53DC11243E13FD0099399E /* quickstart_ios_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53DC10243E13FD0099399E /* quickstart_ios_swiftUITests.swift */; };
 		BA53DC19243E14FC0099399E /* quickstart_ios_swiftUITestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53DC18243E14FC0099399E /* quickstart_ios_swiftUITestsBase.swift */; };
+		BA55130C2701CD700062C49A /* BanubaSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA55130B2701CD280062C49A /* BanubaSdk.framework */; };
+		BA55130D2701CD700062C49A /* BanubaSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BA55130B2701CD280062C49A /* BanubaSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		13FC82162637E4C100B80E53 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 13FC82122637E4C100B80E53 /* BanubaSdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 57AB757820FF4A240013C11F;
-			remoteInfo = BanubaSdk;
-		};
 		BA53DC13243E13FD0099399E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 70EA552D23F2C90A00D3B4DB /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 70EA553423F2C90A00D3B4DB;
 			remoteInfo = "quickstart-ios-swift";
+		};
+		BA55130A2701CD280062C49A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA5513062701CD280062C49A /* BanubaSdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57AB757820FF4A240013C11F;
+			remoteInfo = BanubaSdk;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -51,7 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				13FC821B2637E4D600B80E53 /* BanubaSdk.framework in Embed Frameworks */,
+				BA55130D2701CD700062C49A /* BanubaSdk.framework in Embed Frameworks */,
 				7017ED7625EE6A5700CC9B33 /* BanubaEffectPlayer.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -61,7 +61,6 @@
 
 /* Begin PBXFileReference section */
 		1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BanubaEffectPlayer.xcframework; path = Frameworks/BanubaEffectPlayer.xcframework; sourceTree = "<group>"; };
-		13FC82122637E4C100B80E53 /* BanubaSdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BanubaSdk.xcodeproj; path = Frameworks/BanubaSdk/BanubaSdk/BanubaSdk.xcodeproj; sourceTree = "<group>"; };
 		705AB5C5242A1A310009C570 /* Video.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Video.storyboard; sourceTree = "<group>"; };
 		705AB5C8242A1ADD0009C570 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		705AB5CB242A1B620009C570 /* Photos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photos.storyboard; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		BA53DC10243E13FD0099399E /* quickstart_ios_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quickstart_ios_swiftUITests.swift; sourceTree = "<group>"; };
 		BA53DC12243E13FD0099399E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA53DC18243E14FC0099399E /* quickstart_ios_swiftUITestsBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quickstart_ios_swiftUITestsBase.swift; sourceTree = "<group>"; };
+		BA5513062701CD280062C49A /* BanubaSdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BanubaSdk.xcodeproj; path = Frameworks/BanubaSdk.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13FC821A2637E4D600B80E53 /* BanubaSdk.framework in Frameworks */,
+				BA55130C2701CD700062C49A /* BanubaSdk.framework in Frameworks */,
 				7017ED7525EE6A5700CC9B33 /* BanubaEffectPlayer.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,14 +102,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13FC82132637E4C100B80E53 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				13FC82172637E4C100B80E53 /* BanubaSdk.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		705AB5C7242A1AC90009C570 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +158,7 @@
 		70EA555B23F2D0CB00D3B4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				13FC82122637E4C100B80E53 /* BanubaSdk.xcodeproj */,
+				BA5513062701CD280062C49A /* BanubaSdk.xcodeproj */,
 				1315CE4E25B5B5CC002ED0D6 /* BanubaEffectPlayer.xcframework */,
 			);
 			name = Frameworks;
@@ -190,6 +182,14 @@
 				BA53DC12243E13FD0099399E /* Info.plist */,
 			);
 			path = "quickstart-ios-swiftUITests";
+			sourceTree = "<group>";
+		};
+		BA5513072701CD280062C49A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA55130B2701CD280062C49A /* BanubaSdk.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +263,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 13FC82132637E4C100B80E53 /* Products */;
-					ProjectRef = 13FC82122637E4C100B80E53 /* BanubaSdk.xcodeproj */;
+					ProductGroup = BA5513072701CD280062C49A /* Products */;
+					ProjectRef = BA5513062701CD280062C49A /* BanubaSdk.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -276,11 +276,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		13FC82172637E4C100B80E53 /* BanubaSdk.framework */ = {
+		BA55130B2701CD280062C49A /* BanubaSdk.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = BanubaSdk.framework;
-			remoteRef = 13FC82162637E4C100B80E53 /* PBXContainerItemProxy */;
+			remoteRef = BA55130A2701CD280062C49A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
