@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,19 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-4d-5HP" customClass="EffectPlayerView" customModule="BanubaSdk">
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-4d-5HP" customClass="EffectPlayerView" customModule="BanubaSdk">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2nS-Hc-XUf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bFy-4d-5HP" firstAttribute="trailing" secondItem="ziO-Vq-nh4" secondAttribute="trailing" id="5Lu-uD-fJJ"/>
                             <constraint firstItem="bFy-4d-5HP" firstAttribute="leading" secondItem="ziO-Vq-nh4" secondAttribute="leading" id="Cnh-3v-tc9"/>
                             <constraint firstItem="bFy-4d-5HP" firstAttribute="top" secondItem="ziO-Vq-nh4" secondAttribute="top" id="mK3-Lk-9eM"/>
                             <constraint firstAttribute="bottom" secondItem="bFy-4d-5HP" secondAttribute="bottom" id="oZR-1Z-A7S"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2nS-Hc-XUf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="JKX-kn-tbS">
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="xFN-cC-r4S">
@@ -67,4 +68,9 @@
             <point key="canvasLocation" x="1281" y="-382"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

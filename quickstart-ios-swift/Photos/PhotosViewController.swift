@@ -7,12 +7,21 @@ class PhotosViewController: UIViewController {
     
     private let imagePicker = UIImagePickerController()
     private var sdkManager = BanubaSdkManager()
+    private var offscreenLayer = CAMetalLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .photo))
+        sdkManager.effectManager()?.setRenderSurface(unsafeBitCast(offscreenLayer, to: Int64.self))
         sdkManager.effectPlayer?.surfaceCreated(720, height: 1280)
-        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
+        _ = sdkManager.loadEffect("TrollGrandma", synchronous: true)
+
+        // Run 1 draw call on 1x1 image to prepare render pipline
+        sdkManager.processImageData(
+            UIImage(bgraDataNoCopy: Data(count: 4) as NSData, width: 1, height: 1)!,
+            completion: {(_: UIImage?) in})
+            
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary

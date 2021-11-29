@@ -44,11 +44,10 @@ class VideoViewController: UIViewController {
     private func createEffectPlayerView(videoNaturalSize size: CGSize) -> EffectPlayerView {
         let scale = UIScreen.main.scale
         let frame = CGRect(x: 0, y: 0, width: Int(size.width / scale), height: Int(size.height / scale))
-        let glView = EffectPlayerView(frame: frame)
-        glView.effectPlayer = sdkManager.effectPlayer
-        glView.isMultipleTouchEnabled = true
-        glView.layer.contentsScale = UIScreen.main.scale
-        return glView
+        let epView = EffectPlayerView(frame: frame)
+        epView.isMultipleTouchEnabled = true
+        epView.layer.contentsScale = UIScreen.main.scale
+        return epView
     }
     
     private func processPixelBuffer(_ pixelBuffer: CVPixelBuffer, with presentationTime: CMTime) -> CVPixelBuffer {
@@ -86,10 +85,10 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         videoProcessing.cancelProcessing()
         sdkManager.destroy()
         guard let videoNaturalSize = AVAsset(url: url).tracks(withMediaType: AVMediaType.video).first?.naturalSize else {return}
-        let glView = createEffectPlayerView(videoNaturalSize: videoNaturalSize)
+        let epView = createEffectPlayerView(videoNaturalSize: videoNaturalSize)
         sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .video))
-        sdkManager.setRenderTarget(layer: glView.layer as! CAEAGLLayer, playerConfiguration: nil)
-        _ = sdkManager.loadEffect("UnluckyWitch", synchronous: true)
+        sdkManager.setRenderTarget(view: epView, playerConfiguration: nil)
+        _ = sdkManager.loadEffect("TrollGrandma", synchronous: true)
         sdkManager.startVideoProcessing(width: UInt(videoNaturalSize.width), height: UInt(videoNaturalSize.height))
         videoProcessing.startProcessing(url: url)
     }
@@ -99,7 +98,6 @@ extension VideoViewController: VideoProcessingDelegate {
     func videoProcessingNeedsSample(for pixelBuffer: CVPixelBuffer, presentationTime: CMTime) -> CVPixelBuffer {
         let nanoSeconds = Int64(presentationTime.seconds * 1E9)
         let outputPixelBuffer = processPixelBuffer(pixelBuffer, with: presentationTime)
-        sdkManager.renderTarget?.activate()
         sdkManager.processVideoFrame(from: pixelBuffer, to: outputPixelBuffer, timeNs: nanoSeconds, iterations: 1)
         return outputPixelBuffer
     }
