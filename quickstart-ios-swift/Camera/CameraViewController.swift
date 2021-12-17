@@ -163,10 +163,12 @@ extension CameraViewController: BNBFrameDataListener {
                                   height: 2 * radius))
         }
         
+        CATransaction.begin()
         layer.path = path;
         layer.strokeColor = UIColor.red.cgColor
         layer.fillColor = UIColor.clear.cgColor
         layer.lineWidth = 1
+        CATransaction.commit()
     }
     
     func drawLabelsOnLabelsView(landmarksPoints: [CGPoint], radius: Int){
