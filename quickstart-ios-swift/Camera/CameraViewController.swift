@@ -98,80 +98,92 @@ extension CameraViewController: BNBFrameDataListener {
 
         let recognitionResult = fD.getFrxRecognitionResult()
         let faces = recognitionResult?.getFaces()
-        let landmarks_t = faces?[0].getLandmarks()
+        let landmarksCoordinates = faces?[0].getLandmarks() // Array of NSNumber with size of 2 * landmarks number.
+                                                            // The first value responds to X coord of the first landmark
+                                                            // The second value responds to Y coord of the first landmark
         
-        if (landmarks_t?.count ?? 0 == 0){
-            DispatchQueue.main.async { [weak self] in
-                if (self?.labelsView != nil) {
+        guard let landmarks = landmarksCoordinates else { return }
+        if (landmarks.count == 0){
+            // if there are no landmarks we will just remove last labelsView from the screen
+            if (self.labelsView != nil) {
+                DispatchQueue.main.async { [weak self] in
                     self?.labelsView?.removeFromSuperview()
                 }
             }
         } else {
-            
-            guard let rec_res_t = recognitionResult?.getTransform() else { return }
-            let tsrc = BNBTransformation.makeData(rec_res_t.basisTransform)
-            guard let rsrc = tsrc?.inverseJ()?.transform(rec_res_t.fullRoi) else { return }
-            guard let tdst = BNBTransformation.makeRects(rsrc, targetRect: BNBPixelRect(x:0, y:0, w:screen_width, h:screen_height), rot: BNBRotation.deg0, flipX: false, flipY: false) else { return }
-            guard let t = tsrc?.inverseJ()?.chainRight(tdst) else { return }
+            // get transformation from Camera coordinates to Screen coordinates
+            guard let resultTransformation = recognitionResult?.getTransform()                     else { return }
+            guard let tsrc = BNBTransformation.makeData(resultTransformation.basisTransform)       else { return }
+            guard let rsrc = tsrc.inverseJ()?.transform(resultTransformation.fullRoi)              else { return }
+            guard let tdst = BNBTransformation.makeRects(rsrc, targetRect: BNBPixelRect(x:0, y:0, w:screen_width, h:screen_height), rot: BNBRotation.deg0, flipX: false, flipY: false)               else { return }
+            guard let transformation = tsrc.inverseJ()?.chainRight(tdst)                           else { return }
 
-            guard let landmarks = landmarks_t else { return }
-
+            //create points from transformed coordinates
             var landmarksPoints: [CGPoint] = []
-            for i in 0 ..< (landmarks.count/2) {
-                let x_coord = Float(truncating: landmarks[i * 2])
-                let y_coord = Float(truncating: landmarks[2 * i + 1])
-                let pointBeforeTransformation = BNBPoint2d(x: x_coord, y: y_coord)
+            for i in 0 ..< (landmarks.count / 2) {
+                let xCoord = Float(truncating: landmarks[i * 2])
+                let yCoord = Float(truncating: landmarks[2 * i + 1])
+                let pointBeforeTransformation = BNBPoint2d(x: xCoord, y: yCoord)
                 
-                let pointAfterTransformation = t.transformPoint(pointBeforeTransformation)
-                landmarksPoints.append(CGPoint(x: CGFloat(pointAfterTransformation.x), y: CGFloat(pointAfterTransformation.y)))
-            }
-        
-            let path = CGMutablePath();
-            let radius = 1;
-            for landmarksPoint in landmarksPoints {
-                path.addEllipse(in: CGRect(x: Int(landmarksPoint.x) - radius,
-                                           y: Int(landmarksPoint.y) - radius,
-                                       width: 2 * radius,
-                                      height: 2 * radius))
+                let pointAfterTransformation = transformation.transformPoint(pointBeforeTransformation)
+                landmarksPoints.append(CGPoint(x: CGFloat(pointAfterTransformation.x),
+                                               y: CGFloat(pointAfterTransformation.y)))
             }
             
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.path = path;
-            shapeLayer.strokeColor = UIColor.red.cgColor
-            shapeLayer.fillColor = UIColor.clear.cgColor
-            shapeLayer.lineWidth = 1
-
-            // Add that `CAShapeLayer` to your view's layer:
+            //make points on layer
+            let pointsLayer = CAShapeLayer()
+            let pointsRadius = 1;
+            makePoints(layer: pointsLayer, landmarksPoints: landmarksPoints, radius: pointsRadius)
+            
+            //process visualisation
             DispatchQueue.main.async { [weak self] in
-                var labelCounter = 1
-                
                 if (self?.labelsView == nil) {
                     self?.labelsView = UIView()
                 } else {
-                    self?.labelsView?.removeFromSuperview()
+                    self?.labelsView?.removeFromSuperview() //remove previous labelsView
                     self?.labelsView = UIView()
                 }
                 
-                for landmarksPoint in landmarksPoints {
-                    
-                    let label = UILabel(frame: CGRect(x: Int(landmarksPoint.x) - radius - 11,
-                                                      y: Int(landmarksPoint.y) - 2 * radius,
-                                                      width: 15,
-                                                      height: 10))
-                    label.textAlignment = .left
-                    label.textColor = UIColor.red
-                    label.text = "\(labelCounter)"
-                    label.adjustsFontSizeToFitWidth = false
-                    label.font = label.font.withSize(8)
-                    labelCounter += 1
-                    
-                    self?.labelsView?.addSubview(label)
-                }
-                if (self?.labelsView != nil){
-                    self?.labelsView?.layer.addSublayer(shapeLayer)
-                    self?.effectView.addSubview((self?.labelsView!)!)
+                self?.drawLabelsOnLabelsView(landmarksPoints: landmarksPoints, radius: pointsRadius)
+                self?.labelsView?.layer.addSublayer(pointsLayer)
+                
+                if let view = self?.labelsView {
+                    self?.effectView.addSubview(view)
                 }
             }
+        }
+    }
+    
+    func makePoints(layer: CAShapeLayer, landmarksPoints: [CGPoint], radius: Int){
+        let path = CGMutablePath();
+        for landmarksPoint in landmarksPoints {
+            path.addEllipse(in: CGRect(x: Int(landmarksPoint.x) - radius,
+                                       y: Int(landmarksPoint.y) - radius,
+                                   width: 2 * radius,
+                                  height: 2 * radius))
+        }
+        
+        layer.path = path;
+        layer.strokeColor = UIColor.red.cgColor
+        layer.fillColor = UIColor.clear.cgColor
+        layer.lineWidth = 1
+    }
+    
+    func drawLabelsOnLabelsView(landmarksPoints: [CGPoint], radius: Int){
+        var labelCounter = 1
+        for landmarksPoint in landmarksPoints {
+            let label = UILabel(frame: CGRect(x: Int(landmarksPoint.x) - radius - 11,
+                                              y: Int(landmarksPoint.y) - 2 * radius,
+                                              width: 15,
+                                              height: 10))
+            label.textAlignment = .left
+            label.textColor = UIColor.red
+            label.text = "\(labelCounter)"
+            label.adjustsFontSizeToFitWidth = false
+            label.font = label.font.withSize(8)
+            labelCounter += 1
+            
+            self.labelsView?.addSubview(label)
         }
     }
 }
