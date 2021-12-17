@@ -10,8 +10,8 @@ class CameraViewController: UIViewController {
     private let config = EffectPlayerConfiguration(renderMode: .video)
     private var labelsView: UIView?
     
-    private var screen_width: Int32 = 0
-    private var screen_height: Int32 = 0
+    private var screenWidth: Int32 = 0
+    private var screenHeight: Int32 = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class CameraViewController: UIViewController {
         sdkManager.input.startCamera()
         _ = sdkManager.loadEffect("test_Lips", synchronous: true)
         sdkManager.startEffectPlayer()
-        screen_width = Int32(effectView.frame.size.width)
-        screen_height = Int32(effectView.frame.size.height)
+        screenWidth = Int32(effectView.frame.size.width)
+        screenHeight = Int32(effectView.frame.size.height)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,20 +103,25 @@ extension CameraViewController: BNBFrameDataListener {
                                                             // The second value responds to Y coord of the first landmark
         
         guard let landmarks = landmarksCoordinates else { return }
-        if (landmarks.count == 0){
+        if landmarks.count == 0 {
             // if there are no landmarks we will just remove last labelsView from the screen
-            if (self.labelsView != nil) {
+            if self.labelsView != nil {
                 DispatchQueue.main.async { [weak self] in
                     self?.labelsView?.removeFromSuperview()
                 }
             }
         } else {
-            // get transformation from Camera coordinates to Screen coordinates
-            guard let resultTransformation = recognitionResult?.getTransform()                     else { return }
-            guard let tsrc = BNBTransformation.makeData(resultTransformation.basisTransform)       else { return }
-            guard let rsrc = tsrc.inverseJ()?.transform(resultTransformation.fullRoi)              else { return }
-            guard let tdst = BNBTransformation.makeRects(rsrc, targetRect: BNBPixelRect(x:0, y:0, w:screen_width, h:screen_height), rot: BNBRotation.deg0, flipX: false, flipY: false)               else { return }
-            guard let transformation = tsrc.inverseJ()?.chainRight(tdst)                           else { return }
+            // get transformation from FRX (Camera) coordinates to Screen coordinates
+            // see https://docs.banuba.com/face-ar-sdk/core/transformations
+            let screenRect = BNBPixelRect(x:0, y:0, w:screenWidth, h:screenHeight)
+            guard let frxResultTransformation = recognitionResult?.getTransform(),
+            let commonToFrxResult = BNBTransformation.makeData(frxResultTransformation.basisTransform),
+            let commonRect = commonToFrxResult.inverseJ()?.transform(frxResultTransformation.fullRoi),
+            let commonToScreen = BNBTransformation.makeRects(commonRect,
+                                                             targetRect: screenRect,
+                                                             rot: BNBRotation.deg0, flipX: false, flipY: false),
+            let FrxResultToCommon = commonToFrxResult.inverseJ(),
+            let frxResultToScreen = FrxResultToCommon.chainRight(commonToScreen)  else { return }
 
             //create points from transformed coordinates
             var landmarksPoints: [CGPoint] = []
@@ -125,19 +130,19 @@ extension CameraViewController: BNBFrameDataListener {
                 let yCoord = Float(truncating: landmarks[2 * i + 1])
                 let pointBeforeTransformation = BNBPoint2d(x: xCoord, y: yCoord)
                 
-                let pointAfterTransformation = transformation.transformPoint(pointBeforeTransformation)
+                let pointAfterTransformation = frxResultToScreen.transformPoint(pointBeforeTransformation)
                 landmarksPoints.append(CGPoint(x: CGFloat(pointAfterTransformation.x),
                                                y: CGFloat(pointAfterTransformation.y)))
             }
             
             //make points on layer
             let pointsLayer = CAShapeLayer()
-            let pointsRadius = 1;
+            let pointsRadius = 1
             makePoints(layer: pointsLayer, landmarksPoints: landmarksPoints, radius: pointsRadius)
             
             //process visualisation
             DispatchQueue.main.async { [weak self] in
-                if (self?.labelsView == nil) {
+                if self?.labelsView == nil {
                     self?.labelsView = UIView()
                 } else {
                     self?.labelsView?.removeFromSuperview() //remove previous labelsView
@@ -154,8 +159,8 @@ extension CameraViewController: BNBFrameDataListener {
         }
     }
     
-    func makePoints(layer: CAShapeLayer, landmarksPoints: [CGPoint], radius: Int){
-        let path = CGMutablePath();
+    func makePoints(layer: CAShapeLayer, landmarksPoints: [CGPoint], radius: Int) {
+        let path = CGMutablePath()
         for landmarksPoint in landmarksPoints {
             path.addEllipse(in: CGRect(x: Int(landmarksPoint.x) - radius,
                                        y: Int(landmarksPoint.y) - radius,
@@ -164,14 +169,14 @@ extension CameraViewController: BNBFrameDataListener {
         }
         
         CATransaction.begin()
-        layer.path = path;
+        layer.path = path
         layer.strokeColor = UIColor.red.cgColor
         layer.fillColor = UIColor.clear.cgColor
         layer.lineWidth = 1
         CATransaction.commit()
     }
     
-    func drawLabelsOnLabelsView(landmarksPoints: [CGPoint], radius: Int){
+    func drawLabelsOnLabelsView(landmarksPoints: [CGPoint], radius: Int) {
         var labelCounter = 1
         for landmarksPoint in landmarksPoints {
             let label = UILabel(frame: CGRect(x: Int(landmarksPoint.x) - radius - 11,
