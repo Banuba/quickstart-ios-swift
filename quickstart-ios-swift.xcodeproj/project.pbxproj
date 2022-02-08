@@ -21,6 +21,9 @@
 		70EA556A23F2D78100D3B4DB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 70EA556923F2D78100D3B4DB /* README.md */; };
 		8A6FD78D23FD75CA005F5D14 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6FD78323FD75C9005F5D14 /* VideoViewController.swift */; };
 		8A6FD79023FD75CA005F5D14 /* VideoProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6FD78623FD75C9005F5D14 /* VideoProcessing.swift */; };
+		8E57DA9827B2A67C00ADE9ED /* VideoRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57DA9727B2A67C00ADE9ED /* VideoRecordingViewController.swift */; };
+		8E57DA9A27B2A8C600ADE9ED /* VideoRecording.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E57DA9927B2A8C600ADE9ED /* VideoRecording.storyboard */; };
+		8E57DA9E27B2AEEA00ADE9ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E57DA9D27B2AEEA00ADE9ED /* Images.xcassets */; };
 		BA53DC11243E13FD0099399E /* quickstart_ios_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53DC10243E13FD0099399E /* quickstart_ios_swiftUITests.swift */; };
 		BA53DC19243E14FC0099399E /* quickstart_ios_swiftUITestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53DC18243E14FC0099399E /* quickstart_ios_swiftUITestsBase.swift */; };
 		BA55130C2701CD700062C49A /* BanubaSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA55130B2701CD280062C49A /* BanubaSdk.framework */; };
@@ -75,6 +78,9 @@
 		70EA556923F2D78100D3B4DB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A6FD78323FD75C9005F5D14 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		8A6FD78623FD75C9005F5D14 /* VideoProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoProcessing.swift; sourceTree = "<group>"; };
+		8E57DA9727B2A67C00ADE9ED /* VideoRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecordingViewController.swift; sourceTree = "<group>"; };
+		8E57DA9927B2A8C600ADE9ED /* VideoRecording.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoRecording.storyboard; sourceTree = "<group>"; };
+		8E57DA9D27B2AEEA00ADE9ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BA53DC0E243E13FD0099399E /* quickstart-ios-swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "quickstart-ios-swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA53DC10243E13FD0099399E /* quickstart_ios_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quickstart_ios_swiftUITests.swift; sourceTree = "<group>"; };
 		BA53DC12243E13FD0099399E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,6 +155,7 @@
 				705AB5C7242A1AC90009C570 /* Camera */,
 				705AB5CA242A1B4B0009C570 /* Photos */,
 				8A6FD79623FD7D08005F5D14 /* Video */,
+				8E57DA9427B2A5B300ADE9ED /* VideoRecording */,
 				70EA556323F2D30600D3B4DB /* effects */,
 				70EA554623F2C91100D3B4DB /* Info.plist */,
 			);
@@ -172,6 +179,16 @@
 				705AB5C5242A1A310009C570 /* Video.storyboard */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		8E57DA9427B2A5B300ADE9ED /* VideoRecording */ = {
+			isa = PBXGroup;
+			children = (
+				8E57DA9727B2A67C00ADE9ED /* VideoRecordingViewController.swift */,
+				8E57DA9927B2A8C600ADE9ED /* VideoRecording.storyboard */,
+				8E57DA9D27B2AEEA00ADE9ED /* Images.xcassets */,
+			);
+			path = VideoRecording;
 			sourceTree = "<group>";
 		};
 		BA53DC0F243E13FD0099399E /* quickstart-ios-swiftUITests */ = {
@@ -292,10 +309,12 @@
 			files = (
 				705AB5CC242A1B620009C570 /* Photos.storyboard in Resources */,
 				705AB5C9242A1ADD0009C570 /* Camera.storyboard in Resources */,
+				8E57DA9E27B2AEEA00ADE9ED /* Images.xcassets in Resources */,
 				705AB5C6242A1A310009C570 /* Video.storyboard in Resources */,
 				70EA554023F2C90A00D3B4DB /* Main.storyboard in Resources */,
 				70EA556A23F2D78100D3B4DB /* README.md in Resources */,
 				70EA556423F2D30600D3B4DB /* effects in Resources */,
+				8E57DA9A27B2A8C600ADE9ED /* VideoRecording.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +338,7 @@
 				8A6FD79023FD75CA005F5D14 /* VideoProcessing.swift in Sources */,
 				70EA553923F2C90A00D3B4DB /* AppDelegate.swift in Sources */,
 				70EA555223F2C9E800D3B4DB /* PhotosViewController.swift in Sources */,
+				8E57DA9827B2A67C00ADE9ED /* VideoRecordingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,14 +490,14 @@
 		70EA554A23F2C91100D3B4DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				INFOPLIST_FILE = "quickstart-ios-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -493,14 +513,14 @@
 		70EA554B23F2C91100D3B4DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				INFOPLIST_FILE = "quickstart-ios-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
