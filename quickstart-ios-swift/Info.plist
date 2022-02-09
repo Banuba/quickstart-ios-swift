@@ -23,7 +23,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow camera</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Sample</string>
+	<string>Allow microphone</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Allow library</string>
 	<key>UILaunchStoryboardName</key>
