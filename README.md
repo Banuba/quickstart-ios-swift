@@ -1,4 +1,9 @@
 Quick start examples for integrating [Banuba SDK on iOS](https://docs.banuba.com/face-ar-sdk-v1/ios/ios_getting_started) into Swift apps.  
+The example contains the following usecases:   
+- apply effect to video from camera and show it on the screen,  
+- apply effect to photo from the gallery,  
+- apply effect to video from the gallery,  
+- apply effect to video from camera and record video.   
   
 **Important**  
 Please use [v0.x](../../tree/v0.x) branch for SDK version 0.x (e.g. v0.38).  
