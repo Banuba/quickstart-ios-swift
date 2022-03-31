@@ -1,6 +1,6 @@
 import UIKit
 import AVKit
-import BanubaSdk
+import BNBSdkApi
 
 class VideoViewController: UIViewController {
     
