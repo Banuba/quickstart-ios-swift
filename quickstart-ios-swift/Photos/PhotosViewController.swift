@@ -1,5 +1,5 @@
 import UIKit
-import BanubaSdk
+import BNBSdkApi
 
 class PhotosViewController: UIViewController {
     

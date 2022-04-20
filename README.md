@@ -10,13 +10,11 @@ Please use [v0.x](../../tree/v0.x) branch for SDK version 0.x (e.g. v0.38).
   
 # Getting Started
 
-1. Get the latest Banuba SDK archive for iOS and the client token. Please fill in our form on [form on banuba.com](https://www.banuba.com/face-filters-sdk) website, or contact us via [info@banuba.com](mailto:info@banuba.com).
-2. Copy `BanubaEffectPlayer.xcframework` and `BanubaSdk` project folder from the Banuba SDK archive into `Frameworks` dir:
-    `BNBEffectPlayer/bin/BanubaEffectPlayer.xcframework` => `quickstart-ios-swift/Frameworks/`
-    `BNBEffectPlayer/src/BanubaSdk/BanubaSdk/BanubaSdk` => `quickstart-ios-swift/Frameworks/`
-    `BNBEffectPlayer/src/BanubaSdk/BanubaSdk/BanubaSdk.xcodeproj` => `quickstart-ios-swift/Frameworks/`
-3. Copy and Paste your client token into appropriate section of `quickstart-ios-swift/quickstart-ios-swift/BanubaClientToken.swift`
-4. Open the project in xCode and run the example.
+1. Get the Banuba SDK client token. Please fill in our form on [form on banuba.com](https://www.banuba.com/face-filters-sdk) website, or contact us via [info@banuba.com](mailto:info@banuba.com).
+2. Install [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) if you don't have it.
+3. Install required project dependencies by running `pod install`.
+4. Copy and Paste your client token into appropriate section of `quickstart-ios-swift/quickstart-ios-swift/BanubaClientToken.swift`
+5. Open generated workspace (not a project!) in Xcode and run the example.
 
 # Contributing
 

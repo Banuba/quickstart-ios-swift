@@ -1,4 +1,7 @@
 ## User settings
 xcuserdata/
-Frameworks/
-*.DS_Store
+
+# CocoaPods stuff
+/Pods
+/*.xcworkspace
+/Podfile.lock
