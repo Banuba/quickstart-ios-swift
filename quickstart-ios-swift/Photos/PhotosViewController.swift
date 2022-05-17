@@ -12,7 +12,7 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .photo))
+        sdkManager.setup(configuration: EffectPlayerConfiguration())
         sdkManager.effectManager()?.setRenderSurface(unsafeBitCast(offscreenLayer, to: Int64.self))
         sdkManager.effectPlayer?.surfaceCreated(720, height: 1280)
         _ = sdkManager.loadEffect("TrollGrandma", synchronous: true)

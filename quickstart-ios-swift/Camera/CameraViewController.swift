@@ -6,7 +6,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var effectView: EffectPlayerView!
     
     private var sdkManager = BanubaSdkManager()
-    private let config = EffectPlayerConfiguration(renderMode: .video)
+    private let config = EffectPlayerConfiguration()
     
     override func viewDidLoad() {
         super.viewDidLoad()
