@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="aZB-El-x43">
-                                <rect key="frame" x="94" y="213.66666666666663" width="226" height="309"/>
+                                <rect key="frame" x="94" y="170" width="226" height="396"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUk-5x-zDv">
                                         <rect key="frame" x="0.0" y="0.0" width="226" height="48"/>
@@ -31,7 +31,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6A-Kt-cA9">
-                                        <rect key="frame" x="0.0" y="87.000000000000028" width="226" height="48"/>
+                                        <rect key="frame" x="0.0" y="87" width="226" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Photos">
@@ -42,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLK-zJ-WhR">
-                                        <rect key="frame" x="0.0" y="174.00000000000003" width="226" height="48"/>
+                                        <rect key="frame" x="0.0" y="174" width="226" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Video">
@@ -61,6 +61,17 @@
                                         </state>
                                         <connections>
                                             <segue destination="cg6-tJ-cUb" kind="show" id="YZ7-oE-eis"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl2-Oa-m9R" userLabel="ProcessImage">
+                                        <rect key="frame" x="0.0" y="348" width="226" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Process Image">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="6ct-GV-vEB" kind="show" id="huA-w5-j96"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -145,6 +156,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAk-Su-DrK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1000" y="482"/>
+        </scene>
+        <!--ImageProcessing-->
+        <scene sceneID="tuY-OR-LiH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ImageProcessing" id="6ct-GV-vEB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CuH-p0-gvc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwG-H9-Zrp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="539"/>
         </scene>
     </scenes>
 </document>
