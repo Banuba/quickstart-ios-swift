@@ -20,57 +20,65 @@
                             <stackView contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="En4-qd-FIi" userLabel="MainStackView">
                                 <rect key="frame" x="0.0" y="54" width="414" height="682"/>
                                 <subviews>
-                                    <view contentMode="scaleAspectFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="200" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-4d-5HP" customClass="EffectPlayerView" customModule="BNBSdkApi">
+                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-4d-5HP" customClass="EffectPlayerView" customModule="BNBSdkApi">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="531"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="151" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="zK1-lV-0bK" userLabel="ControlStackView">
                                         <rect key="frame" x="0.0" y="531" width="414" height="151"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0TS-yR-RX8">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0TS-yR-RX8">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Select Image"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Select Image">
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="selectImage:" destination="cng-Vf-Mgj" eventType="touchUpInside" id="ogK-ls-uNF"/>
+                                                </connections>
                                             </button>
-                                            <stackView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XjO-Lb-rBL" userLabel="HairStackView">
-                                                <rect key="frame" x="0.0" y="61" width="414" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGb-JY-UZl" userLabel="Labels&amp;SlidersStackView">
+                                                <rect key="frame" x="0.0" y="80" width="414" height="71"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTI-vH-Hog" userLabel="HairLabel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rDg-hd-CQ4" userLabel="HairSlider">
-                                                        <rect key="frame" x="29" y="0.0" width="387" height="31"/>
-                                                    </slider>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-IK-KqB" userLabel="LabelsStackView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="71"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTI-vH-Hog" userLabel="HairLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="31" height="45.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Eyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgD-OR-elH" userLabel="EyesLabel">
+                                                                <rect key="frame" x="0.0" y="50.666666666666629" width="31" height="20.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m9F-Op-aeh" userLabel="SlidersStackView">
+                                                        <rect key="frame" x="31" y="0.0" width="383" height="71"/>
+                                                        <subviews>
+                                                            <slider contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rDg-hd-CQ4" userLabel="HairSlider">
+                                                                <rect key="frame" x="-2" y="0.0" width="387" height="37"/>
+                                                                <connections>
+                                                                    <action selector="hairValueChanged:" destination="cng-Vf-Mgj" eventType="valueChanged" id="xee-Zw-fne"/>
+                                                                </connections>
+                                                            </slider>
+                                                            <slider contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-lD-YVr" userLabel="EyesSlider">
+                                                                <rect key="frame" x="-2" y="41" width="387" height="31"/>
+                                                                <connections>
+                                                                    <action selector="eyesValueChanged:" destination="cng-Vf-Mgj" eventType="valueChanged" id="EAt-6q-mGZ"/>
+                                                                </connections>
+                                                            </slider>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </stackView>
-                                            <stackView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyc-ZD-oiG" userLabel="EyesStackView">
-                                                <rect key="frame" x="0.0" y="121" width="414" height="30"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgD-OR-elH" userLabel="EyesLabel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-lD-YVr" userLabel="EyesSlider">
-                                                        <rect key="frame" x="34" y="0.0" width="382" height="31"/>
-                                                    </slider>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="qyc-ZD-oiG" secondAttribute="bottom" constant="10" id="MPp-Lh-RGV" userLabel="bottom = EyesStackView.bottom"/>
-                                            <constraint firstItem="qyc-ZD-oiG" firstAttribute="top" secondItem="XjO-Lb-rBL" secondAttribute="bottom" constant="10" id="VbX-P1-bFG"/>
-                                            <constraint firstItem="qyc-ZD-oiG" firstAttribute="top" secondItem="XjO-Lb-rBL" secondAttribute="bottom" constant="10" id="uSk-SF-zjS"/>
-                                            <constraint firstItem="XjO-Lb-rBL" firstAttribute="top" secondItem="0TS-yR-RX8" secondAttribute="bottom" constant="10" id="zMs-f4-fGI"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -126,6 +134,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

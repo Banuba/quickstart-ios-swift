@@ -7,19 +7,26 @@ class ProcessImageController: UIViewController {
     
     private var sdkManager = BanubaSdkManager()
     private let config = EffectPlayerConfiguration(renderMode: .video)
+    private let imagePicker = UIImagePickerController()
+    private var image : UIImage?
+    
+    private var hairGreenValue: Float = 0.0
+    private var eyesGreenValue: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
         setUpRenderSize()
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sdkManager.input.startCamera()
-        _ = sdkManager.loadEffect("TrollGrandma", synchronous: true)
-        sdkManager.startEffectPlayer()
     }
     
     deinit {
@@ -27,6 +34,11 @@ class ProcessImageController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if (image != nil) {
+            self.sdkManager.captureEditedImage(completion: {
+                (processedImage) in self.image = processedImage})
+            self.sdkManager.stopEditingImage()
+        }
         sdkManager.stopEffectPlayer()
         sdkManager.removeRenderTarget()
         coordinator.animateAlongsideTransition(in: effectView, animation: { (UIViewControllerTransitionCoordinatorContext) in
@@ -37,6 +49,11 @@ class ProcessImageController: UIViewController {
     
     private func setUpRenderTarget() {
         sdkManager.setRenderTarget(view: effectView, playerConfiguration: nil)
+        
+        _ = sdkManager.loadEffect("Makeup", synchronous: true)
+        sdkManager.currentEffect()?.evalJs("Eyes.color('1.0 \(eyesGreenValue) 0.0 0.5')", resultCallback: nil)
+        sdkManager.currentEffect()?.evalJs("Hair.color('1.0 \(hairGreenValue) 0.0 0.5')", resultCallback: nil)
+        
         sdkManager.startEffectPlayer()
     }
     
@@ -46,25 +63,49 @@ class ProcessImageController: UIViewController {
             config.orientation = .deg90
             config.renderSize = CGSize(width: 720, height: 1280)
             sdkManager.autoRotationEnabled = false
-            setUpRenderTarget()
         case .portraitUpsideDown:
             config.orientation = .deg270
             config.renderSize = CGSize(width: 720, height: 1280)
-            setUpRenderTarget()
         case .landscapeLeft:
             config.orientation = .deg180
             config.renderSize = CGSize(width: 1280, height: 720)
-            setUpRenderTarget()
         case .landscapeRight:
             config.orientation = .deg0
             config.renderSize = CGSize(width: 1280, height: 720)
-            setUpRenderTarget()
-        default:
-            setUpRenderTarget()
+        default: break
         }
+        
+        setUpRenderTarget()
+        guard let image = self.image else {return}
+        self.sdkManager.startEditingImage(image)
+    }
+    
+    @IBAction func selectImage(_ sender: UIButton) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func hairValueChanged(_ sender: UISlider) {
+        hairGreenValue = sender.value / 10
+        sdkManager.currentEffect()?.evalJs("Hair.color('1.0 \(hairGreenValue) 0.0 0.5')", resultCallback: nil)
+    }
+    
+    @IBAction func eyesValueChanged(_ sender: UISlider) {
+        eyesGreenValue = sender.value / 10
+        sdkManager.currentEffect()?.evalJs("Eyes.color('1.0 \(eyesGreenValue) 0.0 0.5')", resultCallback: nil)
     }
     
     @IBAction func closeCamera(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProcessImageController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.effectView.contentMode = .scaleAspectFit
+            image = pickedImage
+            self.sdkManager.startEditingImage(pickedImage)
+        }
         dismiss(animated: true, completion: nil)
     }
 }
