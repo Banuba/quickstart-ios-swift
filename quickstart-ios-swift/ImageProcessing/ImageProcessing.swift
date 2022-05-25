@@ -18,6 +18,7 @@ class ProcessImageController: UIViewController {
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
         setUpRenderSize()
+        loadMakeup()
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -34,27 +35,27 @@ class ProcessImageController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if (image != nil) {
-            self.sdkManager.captureEditedImage(completion: {
-                (processedImage) in self.image = processedImage})
-            self.sdkManager.stopEditingImage()
-        }
         sdkManager.stopEffectPlayer()
         sdkManager.removeRenderTarget()
         coordinator.animateAlongsideTransition(in: effectView, animation: { (UIViewControllerTransitionCoordinatorContext) in
             self.sdkManager.autoRotationEnabled = true
             self.setUpRenderSize()
+            self.loadMakeup()
+            
+            guard let image = self.image else {return}
+            self.sdkManager.startEditingImage(image)
         }, completion: nil)
     }
     
     private func setUpRenderTarget() {
         sdkManager.setRenderTarget(view: effectView, playerConfiguration: nil)
-        
+        sdkManager.startEffectPlayer()
+    }
+
+    private func loadMakeup() {
         _ = sdkManager.loadEffect("Makeup", synchronous: true)
         sdkManager.currentEffect()?.evalJs("Eyes.color('1.0 \(eyesGreenValue) 0.0 0.5')", resultCallback: nil)
         sdkManager.currentEffect()?.evalJs("Hair.color('1.0 \(hairGreenValue) 0.0 0.5')", resultCallback: nil)
-        
-        sdkManager.startEffectPlayer()
     }
     
     private func setUpRenderSize() {
@@ -74,10 +75,7 @@ class ProcessImageController: UIViewController {
             config.renderSize = CGSize(width: 1280, height: 720)
         default: break
         }
-        
         setUpRenderTarget()
-        guard let image = self.image else {return}
-        self.sdkManager.startEditingImage(image)
     }
     
     @IBAction func selectImage(_ sender: UIButton) {
