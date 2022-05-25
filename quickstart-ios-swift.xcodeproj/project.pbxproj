@@ -19,6 +19,8 @@
 		70EA556A23F2D78100D3B4DB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 70EA556923F2D78100D3B4DB /* README.md */; };
 		8A6FD78D23FD75CA005F5D14 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6FD78323FD75C9005F5D14 /* VideoViewController.swift */; };
 		8A6FD79023FD75CA005F5D14 /* VideoProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6FD78623FD75C9005F5D14 /* VideoProcessing.swift */; };
+		8E23B315283E1EC2000751FE /* ImageProcessing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E23B313283E1EC2000751FE /* ImageProcessing.storyboard */; };
+		8E23B316283E1EC2000751FE /* ImageProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23B314283E1EC2000751FE /* ImageProcessing.swift */; };
 		8E57DA9827B2A67C00ADE9ED /* VideoRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57DA9727B2A67C00ADE9ED /* VideoRecordingViewController.swift */; };
 		8E57DA9A27B2A8C600ADE9ED /* VideoRecording.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E57DA9927B2A8C600ADE9ED /* VideoRecording.storyboard */; };
 		8E57DA9E27B2AEEA00ADE9ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E57DA9D27B2AEEA00ADE9ED /* Images.xcassets */; };
@@ -64,6 +66,8 @@
 		70EA556923F2D78100D3B4DB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A6FD78323FD75C9005F5D14 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		8A6FD78623FD75C9005F5D14 /* VideoProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoProcessing.swift; sourceTree = "<group>"; };
+		8E23B313283E1EC2000751FE /* ImageProcessing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageProcessing.storyboard; sourceTree = "<group>"; };
+		8E23B314283E1EC2000751FE /* ImageProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessing.swift; sourceTree = "<group>"; };
 		8E57DA9727B2A67C00ADE9ED /* VideoRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecordingViewController.swift; sourceTree = "<group>"; };
 		8E57DA9927B2A8C600ADE9ED /* VideoRecording.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoRecording.storyboard; sourceTree = "<group>"; };
 		8E57DA9D27B2AEEA00ADE9ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				705AB5CA242A1B4B0009C570 /* Photos */,
 				8A6FD79623FD7D08005F5D14 /* Video */,
 				8E57DA9427B2A5B300ADE9ED /* VideoRecording */,
+				8E23B30E283E1E5D000751FE /* ImageProcessing */,
 				70EA556323F2D30600D3B4DB /* effects */,
 				70EA554623F2C91100D3B4DB /* Info.plist */,
 			);
@@ -160,6 +165,15 @@
 				705AB5C5242A1A310009C570 /* Video.storyboard */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		8E23B30E283E1E5D000751FE /* ImageProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				8E23B313283E1EC2000751FE /* ImageProcessing.storyboard */,
+				8E23B314283E1EC2000751FE /* ImageProcessing.swift */,
+			);
+			path = ImageProcessing;
 			sourceTree = "<group>";
 		};
 		8E57DA9427B2A5B300ADE9ED /* VideoRecording */ = {
@@ -269,6 +283,7 @@
 				8E57DA9E27B2AEEA00ADE9ED /* Images.xcassets in Resources */,
 				705AB5C6242A1A310009C570 /* Video.storyboard in Resources */,
 				70EA554023F2C90A00D3B4DB /* Main.storyboard in Resources */,
+				8E23B315283E1EC2000751FE /* ImageProcessing.storyboard in Resources */,
 				70EA556A23F2D78100D3B4DB /* README.md in Resources */,
 				70EA556423F2D30600D3B4DB /* effects in Resources */,
 				8E57DA9A27B2A8C600ADE9ED /* VideoRecording.storyboard in Resources */,
@@ -289,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E23B316283E1EC2000751FE /* ImageProcessing.swift in Sources */,
 				70EA556223F2D23F00D3B4DB /* BanubaClientToken.swift in Sources */,
 				70EA555023F2C9D000D3B4DB /* CameraViewController.swift in Sources */,
 				8A6FD78D23FD75CA005F5D14 /* VideoViewController.swift in Sources */,
