@@ -3,7 +3,8 @@ The example contains the following usecases:
 - apply effect to video from camera and show it on the screen,  
 - apply effect to photo from the gallery,  
 - apply effect to video from the gallery,  
-- apply effect to video from camera and record video.   
+- apply effect to video from camera and record video,
+- apply Makeup effect to photo and use Makeup API in realtime.    
   
 **Important**  
 Please use [v0.x](../../tree/v0.x) branch for SDK version 0.x (e.g. v0.38).  
