@@ -67,7 +67,7 @@
                                         <rect key="frame" x="0.0" y="348" width="226" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="Process Image">
+                                        <state key="normal" title="Photo Processing">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="1000" y="482"/>
         </scene>
-        <!--ImageProcessing-->
+        <!--PhotoProcessing-->
         <scene sceneID="tuY-OR-LiH">
             <objects>
-                <viewControllerPlaceholder storyboardName="ImageProcessing" id="6ct-GV-vEB" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="PhotoProcessing" id="6ct-GV-vEB" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="CuH-p0-gvc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwG-H9-Zrp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

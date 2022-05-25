@@ -1,7 +1,7 @@
 import UIKit
 import BNBSdkApi
 
-class ProcessImageController: UIViewController {
+class PhotoProcessingController: UIViewController {
     
     @IBOutlet weak var effectView: EffectPlayerView!
     
@@ -97,7 +97,7 @@ class ProcessImageController: UIViewController {
     }
 }
 
-extension ProcessImageController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+extension PhotoProcessingController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.effectView.contentMode = .scaleAspectFit
