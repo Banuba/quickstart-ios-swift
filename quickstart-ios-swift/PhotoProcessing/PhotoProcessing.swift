@@ -1,9 +1,11 @@
 import UIKit
+import Foundation
 import BNBSdkApi
 
 class PhotoProcessingController: UIViewController {
     
     @IBOutlet weak var effectView: EffectPlayerView!
+    @IBOutlet weak var selectImageButton: UIButton!
     
     private var sdkManager = BanubaSdkManager()
     private let config = EffectPlayerConfiguration(renderMode: .video)
@@ -18,12 +20,15 @@ class PhotoProcessingController: UIViewController {
         effectView.layoutIfNeeded()
         sdkManager.setup(configuration: config)
         setUpRenderSize()
-        loadMakeup()
         
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        if ( loadMakeup() ) {
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .photoLibrary
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            processAbsentMakeup()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,10 +57,27 @@ class PhotoProcessingController: UIViewController {
         sdkManager.startEffectPlayer()
     }
 
-    private func loadMakeup() {
-        _ = sdkManager.loadEffect("Makeup", synchronous: true)
-        sdkManager.currentEffect()?.evalJs("Eyes.color('1.0 \(eyesGreenValue) 0.0 0.5')", resultCallback: nil)
-        sdkManager.currentEffect()?.evalJs("Hair.color('1.0 \(hairGreenValue) 0.0 0.5')", resultCallback: nil)
+    private func loadMakeup() -> Bool {
+        let effect = sdkManager.loadEffect("Makeup", synchronous: true)
+        if let m_effect = effect {
+            if ( m_effect.url().hasSuffix("Makeup") ) {
+                sdkManager.currentEffect()?.evalJs("Hair.color('1.0 \(hairGreenValue) 0.0 0.5')", resultCallback: nil)
+                sdkManager.currentEffect()?.evalJs("Eyes.color('1.0 \(eyesGreenValue) 0.0 0.5')", resultCallback: nil)
+                return true
+            }
+        }
+        return false
+    }
+
+    private func processAbsentMakeup() {
+        let alert = UIAlertController(
+            title: "Can't load the Makeup effect",
+            message: "This view requires the Makeup effect in the 'effects' folder. You can find information about how to get the effect in README.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction( title: "OK", style: .default, handler: nil))
+        present(alert, animated: false, completion: nil)
+        selectImageButton.isHidden = true
     }
     
     private func setUpRenderSize() {

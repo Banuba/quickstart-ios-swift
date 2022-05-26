@@ -7,8 +7,9 @@ The example contains the following usecases:
 - apply Makeup effect to photo and use Makeup API in realtime.    
   
 **Important**  
-Please use [v0.x](../../tree/v0.x) branch for SDK version 0.x (e.g. v0.38).  
-  
+Please use [v0.x](../../tree/v0.x) branch for SDK version 0.x (e.g. v0.38).
+The 'Photo Processing' view requires the Makeup effect. You can get the effect on [banuba.com](https://docs.banuba.com/face-ar-sdk-v1/overview/demo_face_filters).
+
 # Getting Started
 
 1. Get the Banuba SDK client token. Please fill in our form on [form on banuba.com](https://www.banuba.com/face-filters-sdk) website, or contact us via [info@banuba.com](mailto:info@banuba.com).
