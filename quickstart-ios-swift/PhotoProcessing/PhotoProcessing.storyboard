@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--PhotoProcessing-->
+        <scene sceneID="VNc-RQ-5uY">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="cng-Vf-Mgj" userLabel="PhotoProcessing" customClass="PhotoProcessingController" customModule="quickstart_ios_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ziO-Vq-nh4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="En4-qd-FIi" userLabel="MainStackView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <subviews>
+                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-4d-5HP" customClass="EffectPlayerView" customModule="BNBSdkApi">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="541"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <stackView contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="151" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zK1-lV-0bK" userLabel="ControlStackView">
+                                        <rect key="frame" x="0.0" y="541" width="414" height="151"/>
+                                        <subviews>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0TS-yR-RX8">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Select Image">
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="selectImage:" destination="cng-Vf-Mgj" eventType="touchUpInside" id="ogK-ls-uNF"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGb-JY-UZl" userLabel="Labels&amp;SlidersStackView">
+                                                <rect key="frame" x="0.0" y="75" width="414" height="76"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-IK-KqB" userLabel="LabelsStackView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="76"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTI-vH-Hog" userLabel="HairLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="31" height="45.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Eyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgD-OR-elH" userLabel="EyesLabel">
+                                                                <rect key="frame" x="0.0" y="55.666666666666636" width="31" height="20.333333333333336"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="m9F-Op-aeh" userLabel="SlidersStackView">
+                                                        <rect key="frame" x="31" y="0.0" width="383" height="76"/>
+                                                        <subviews>
+                                                            <slider contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rDg-hd-CQ4" userLabel="HairSlider">
+                                                                <rect key="frame" x="-2" y="0.0" width="387" height="37"/>
+                                                                <connections>
+                                                                    <action selector="hairValueChanged:" destination="cng-Vf-Mgj" eventType="valueChanged" id="xee-Zw-fne"/>
+                                                                </connections>
+                                                            </slider>
+                                                            <slider contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-lD-YVr" userLabel="EyesSlider">
+                                                                <rect key="frame" x="-2" y="46" width="387" height="31"/>
+                                                                <connections>
+                                                                    <action selector="eyesValueChanged:" destination="cng-Vf-Mgj" eventType="valueChanged" id="EAt-6q-mGZ"/>
+                                                                </connections>
+                                                            </slider>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2nS-Hc-XUf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="En4-qd-FIi" secondAttribute="trailing" id="UMc-ay-oc3"/>
+                            <constraint firstItem="En4-qd-FIi" firstAttribute="top" secondItem="2nS-Hc-XUf" secondAttribute="top" id="abX-jE-nd6"/>
+                            <constraint firstItem="En4-qd-FIi" firstAttribute="leading" secondItem="2nS-Hc-XUf" secondAttribute="leading" id="et9-Ui-rdW"/>
+                            <constraint firstAttribute="bottom" secondItem="En4-qd-FIi" secondAttribute="bottom" id="qlW-su-3sJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo Processing" id="JKX-kn-tbS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="xFN-cC-r4S">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="closeCamera:" destination="cng-Vf-Mgj" id="bM9-yp-eNg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="effectView" destination="bFy-4d-5HP" id="cdP-Aq-Rkq"/>
+                        <outlet property="selectImageButton" destination="0TS-yR-RX8" id="56q-2P-W0i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ka-C8-mXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1969.5652173913045" y="-382.33695652173918"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Qp-5q-Oby">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="HMo-jw-2dH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="r16-Z3-UXq"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MGw-3e-Jk0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cng-Vf-Mgj" kind="relationship" relationship="rootViewController" id="1PD-P1-70k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEG-Bv-Fs3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="-382"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
