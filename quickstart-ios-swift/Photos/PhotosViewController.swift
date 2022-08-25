@@ -1,5 +1,6 @@
 import UIKit
 import BNBSdkApi
+import BNBSdkCore
 
 class PhotosViewController: UIViewController {
     
@@ -7,13 +8,33 @@ class PhotosViewController: UIViewController {
     
     private let imagePicker = UIImagePickerController()
     private var sdkManager = BanubaSdkManager()
+    private var gpuDevice: MTLDevice!
+    private var commandQueue: MTLCommandQueue!
     private var offscreenLayer = CAMetalLayer()
     
+    func getSurface() -> BNBSurfaceData {
+        guard let device = MTLCreateSystemDefaultDevice() else
+        {
+            fatalError("GPU device not available")
+        }
+        guard let queue = device.makeCommandQueue() else {
+            fatalError("GPU command queue not available")
+        }
+        self.gpuDevice = device
+        self.commandQueue = queue
+        let data = BNBSurfaceData.init(
+            gpuDevicePtr: Int64(Int(bitPattern: Unmanaged.passUnretained(gpuDevice).toOpaque())),
+            commandQueuePtr: Int64(Int(bitPattern: Unmanaged.passUnretained(commandQueue).toOpaque())),
+            surfacePtr: Int64(Int(bitPattern: Unmanaged.passUnretained(offscreenLayer).toOpaque()))
+        )
+        return data
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .photo))
-        sdkManager.effectManager()?.setRenderSurface(unsafeBitCast(offscreenLayer, to: Int64.self))
+        sdkManager.setup(configuration: EffectPlayerConfiguration())
+        sdkManager.effectManager()?.setRenderSurface(getSurface())
         sdkManager.effectPlayer?.surfaceCreated(720, height: 1280)
         _ = sdkManager.loadEffect("TrollGrandma", synchronous: true)
 

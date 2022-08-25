@@ -86,7 +86,7 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
         sdkManager.destroy()
         guard let videoNaturalSize = AVAsset(url: url).tracks(withMediaType: AVMediaType.video).first?.naturalSize else {return}
         let epView = createEffectPlayerView(videoNaturalSize: videoNaturalSize)
-        sdkManager.setup(configuration: EffectPlayerConfiguration(renderMode: .video))
+        sdkManager.setup(configuration: EffectPlayerConfiguration())
         sdkManager.setRenderTarget(view: epView, playerConfiguration: nil)
         _ = sdkManager.loadEffect("TrollGrandma", synchronous: true)
         sdkManager.startVideoProcessing(width: UInt(videoNaturalSize.width), height: UInt(videoNaturalSize.height))

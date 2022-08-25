@@ -8,7 +8,7 @@ class PhotoProcessingController: UIViewController {
     @IBOutlet weak var selectImageButton: UIButton!
     
     private var sdkManager = BanubaSdkManager()
-    private let config = EffectPlayerConfiguration(renderMode: .video)
+    private let config = EffectPlayerConfiguration()
     private let imagePicker = UIImagePickerController()
     private var image : UIImage?
     

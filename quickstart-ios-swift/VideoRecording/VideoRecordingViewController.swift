@@ -7,7 +7,7 @@ class VideoRecordingViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     
     private var sdkManager = BanubaSdkManager()
-    private let config = EffectPlayerConfiguration(renderMode: .video)
+    private let config = EffectPlayerConfiguration()
     var isRecording = false
     
     override func viewDidLoad() {
