@@ -32,7 +32,7 @@ class VideoProcessing {
         ]
         
         let videoSettings:[String:Any] = [
-            AVVideoCodecKey: AVVideoCodecH264,
+            AVVideoCodecKey: AVVideoCodecType.h264,
             AVVideoHeightKey: videoTrack.naturalSize.height,
             AVVideoWidthKey: videoTrack.naturalSize.width
         ]

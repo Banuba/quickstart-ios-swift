@@ -8,7 +8,8 @@ class VideoRecordingViewController: UIViewController {
     
     private var sdkManager = BanubaSdkManager()
     private let config = EffectPlayerConfiguration()
-    var isRecording = false
+    private var isRecording = false
+    private var fileURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,19 +87,35 @@ class VideoRecordingViewController: UIViewController {
     func recordVideo(_ shouldRecord: Bool){
         let hasSpace =  sdkManager.output?.hasDiskCapacityForRecording() ?? true
         if shouldRecord && hasSpace {
-            let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent("video.mp4")
-            sdkManager.input.startAudioCapturing()
-            sdkManager.output?.startVideoCapturing(fileURL:fileURL) { (success, error) in
-                print("Done Writing: \(success)")
-                if let _error = error {
-                    print(_error)
-                }
-                self.sdkManager.input.stopAudioCapturing()
-                self.saveVideoToGallery(fileURL: fileURL.relativePath)
+            fileURL = FileManager.default.temporaryDirectory.appendingPathComponent("video.mp4")
+            guard let fileURL = fileURL else {
+                return
             }
+            sdkManager.input.startAudioCapturing()
+            sdkManager.output?.startRecordingWithURL(fileURL, delegate: self)
         } else {
-            sdkManager.output?.stopVideoCapturing(cancel: false)
+            sdkManager.output?.stopRecording()
         }
+    }
+}
+
+extension VideoRecordingViewController: VideoRecorderDelegate {
+    func onRecorderStateChanged(_ state: VideoRecordingState) {
+    }
+    
+    func onRecordingFinished(success: Bool, error: Error?) {
+        print("Done Writing: \(success)")
+        if let _error = error {
+            print(_error)
+        }
+        self.sdkManager.input.stopAudioCapturing()
+        guard let fileURL = fileURL else {
+            return
+        }
+        self.saveVideoToGallery(fileURL: fileURL.relativePath)
+    }
+    
+    func onRecordingProgress(duration: TimeInterval) {
     }
 }
 

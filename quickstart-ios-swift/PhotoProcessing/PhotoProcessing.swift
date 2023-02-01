@@ -45,7 +45,7 @@ class PhotoProcessingController: UIViewController {
         coordinator.animateAlongsideTransition(in: effectView, animation: { (UIViewControllerTransitionCoordinatorContext) in
             self.sdkManager.autoRotationEnabled = true
             self.setUpRenderSize()
-            self.loadMakeup()
+            _ = self.loadMakeup()
             
             guard let image = self.image else {return}
             self.sdkManager.startEditingImage(image)
