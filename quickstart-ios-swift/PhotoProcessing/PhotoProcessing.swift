@@ -60,11 +60,9 @@ class PhotoProcessingController: UIViewController {
     private func loadMakeup() -> Bool {
         let effect = sdkManager.loadEffect("Makeup", synchronous: true)
         if let m_effect = effect {
-            if ( m_effect.url().hasSuffix("Makeup") ) {
-                sdkManager.currentEffect()?.evalJs("Hair.color('1.0 \(hairGreenValue) 0.0 0.5')", resultCallback: nil)
-                sdkManager.currentEffect()?.evalJs("Eyes.color('1.0 \(eyesGreenValue) 0.0 0.5')", resultCallback: nil)
-                return true
-            }
+            sdkManager.currentEffect()?.evalJs("Hair.color('1.0 \(hairGreenValue) 0.0 0.5')", resultCallback: nil)
+            sdkManager.currentEffect()?.evalJs("Eyes.color('1.0 \(eyesGreenValue) 0.0 0.5')", resultCallback: nil)
+            return true
         }
         return false
     }
