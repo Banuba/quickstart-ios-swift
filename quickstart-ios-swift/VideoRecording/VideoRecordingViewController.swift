@@ -5,6 +5,7 @@ class VideoRecordingViewController: UIViewController {
 
     @IBOutlet weak var effectView: EffectPlayerView!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var effectViewAspect: NSLayoutConstraint!
     
     private let player = Player()
     private let cameraDevice = CameraDevice(cameraMode: .FrontCameraSession, captureSessionPreset: .hd1280x720)
@@ -18,6 +19,11 @@ class VideoRecordingViewController: UIViewController {
         videoOutput = Video(cameraDevice: cameraDevice)
         player.use(input: Camera(cameraDevice: cameraDevice), outputs: [effectView, videoOutput])
         cameraDevice.start()
+        
+        resize(size: player.size)
+        player.onResize { [weak self] size in
+            self?.resize(size: size)
+        }
 
         effectView.layoutIfNeeded()
     }
@@ -61,5 +67,9 @@ class VideoRecordingViewController: UIViewController {
         if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(fileURL) {
             UISaveVideoAtPathToSavedPhotosAlbum(fileURL, nil, nil, nil)
         }
+    }
+    
+    private func resize(size: CGSize) {
+        effectViewAspect.constant = size.width / size.height
     }
 }
