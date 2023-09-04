@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,19 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-4d-5HP" customClass="EffectPlayerView" customModule="BNBSdkApi">
-                                <rect key="frame" x="-13" y="0.0" width="440" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="bFy-4d-5HP" secondAttribute="height" multiplier="207:346" id="Wje-q5-y7Y"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2nS-Hc-XUf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bFy-4d-5HP" firstAttribute="top" secondItem="ziO-Vq-nh4" secondAttribute="top" id="Ogf-ZP-ley"/>
-                            <constraint firstItem="bFy-4d-5HP" firstAttribute="centerY" secondItem="ziO-Vq-nh4" secondAttribute="centerY" id="VSF-AO-0Db"/>
-                            <constraint firstItem="bFy-4d-5HP" firstAttribute="centerX" secondItem="ziO-Vq-nh4" secondAttribute="centerX" id="ZpD-OF-l6R"/>
+                            <constraint firstItem="bFy-4d-5HP" firstAttribute="trailing" secondItem="ziO-Vq-nh4" secondAttribute="trailing" id="5Lu-uD-fJJ"/>
+                            <constraint firstItem="bFy-4d-5HP" firstAttribute="leading" secondItem="ziO-Vq-nh4" secondAttribute="leading" id="Cnh-3v-tc9"/>
+                            <constraint firstItem="bFy-4d-5HP" firstAttribute="top" secondItem="ziO-Vq-nh4" secondAttribute="top" id="mK3-Lk-9eM"/>
+                            <constraint firstAttribute="bottom" secondItem="bFy-4d-5HP" secondAttribute="bottom" id="oZR-1Z-A7S"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="JKX-kn-tbS">
@@ -44,7 +42,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="effectView" destination="bFy-4d-5HP" id="cdP-Aq-Rkq"/>
-                        <outlet property="effectViewAspect" destination="Wje-q5-y7Y" id="db0-Gg-ave"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ka-C8-mXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

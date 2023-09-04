@@ -3,8 +3,6 @@ import BNBSdkApi
 
 class CameraViewController: UIViewController {
     @IBOutlet weak var effectView: EffectPlayerView!
-    @IBOutlet weak var effectViewAspect: NSLayoutConstraint!
-    
     private let player = Player()
 
     override func viewDidLoad() {
@@ -16,18 +14,9 @@ class CameraViewController: UIViewController {
         cameraDevice.start()
         player.use(input: Camera(cameraDevice: cameraDevice), outputs: [effectView])
         _ = player.load(effect: "TrollGrandma")
-        
-        resize(size: player.size)
-        player.onResize { [weak self] size in
-            self?.resize(size: size)
-        }
     }
 
     @IBAction func closeCamera(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func resize(size: CGSize) {
-        effectViewAspect.constant = size.width / size.height
     }
 }
