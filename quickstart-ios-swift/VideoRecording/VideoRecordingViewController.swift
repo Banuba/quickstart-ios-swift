@@ -34,14 +34,27 @@ class VideoRecordingViewController: UIViewController {
     @IBAction func pushRecordButton(_ sender: UIButton) {
         if videoOutput.state == .stopped {
             videoOutput.record(url: self.fileURL, size: player.size) { state in
+                switch state {
+                case .recording, .paused:
+                    self.recordButton.setImage(UIImage(named: "stop_video"), for: .normal)
+                case .stopped, .processing:
+                    self.recordButton.setImage(UIImage(named: "shutter_video"), for: .normal)
+                @unknown default:
+                    break
+                }
             } onFinished: { success, error in
-                guard success else { return }
-                // propose to save recorded video
-                let alert = UIAlertController(title: "Video Recorded", message: "Would you like to save it in gallery?", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Video Recording", message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                    self.saveVideoToGallery(fileURL: self.fileURL.relativePath)
-                })
+                if let error = error, !success {
+                    // show video recording error
+                    alert.message = error.localizedDescription
+                } else {
+                    // propose to save recorded video
+                    alert.message = "Would you like to save recorded video in gallery?"
+                    alert.addAction(UIAlertAction(title: "Save", style: .default) { action in
+                        self.saveVideoToGallery(fileURL: self.fileURL.relativePath)
+                    })
+                }
                 self.present(alert, animated: true, completion: nil)
             } onProgress: { duration in
                 let time = round(duration)
@@ -50,10 +63,8 @@ class VideoRecordingViewController: UIViewController {
                 let text = String(format: "%02d : %02d", minutes, seconds)
                 print("Video recording in progress: \(text)")
             }
-            self.recordButton.setImage(UIImage(named: "stop_video"), for: .normal)
         } else {
             videoOutput.stop()
-            self.recordButton.setImage(UIImage(named: "shutter_video"), for: .normal)
         }
     }
     
