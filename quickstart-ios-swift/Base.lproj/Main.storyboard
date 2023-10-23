@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6t9-Af-uee">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6t9-Af-uee">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--start_ios_swift-->
+        <!--quickstart_ios_swift-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" sceneMemberID="viewController">
@@ -67,7 +67,7 @@
                                         <rect key="frame" x="0.0" y="348" width="226" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="Photo Processing">
+                                        <state key="normal" title="Photo Editing">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -84,7 +84,7 @@
                             <constraint firstItem="aZB-El-x43" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aD5-Ty-SPZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="start_ios_swift" id="3sH-rY-ZM1"/>
+                    <navigationItem key="navigationItem" title="quickstart_ios_swift" id="3sH-rY-ZM1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="1000" y="482"/>
         </scene>
-        <!--PhotoProcessing-->
+        <!--PhotoEditing-->
         <scene sceneID="tuY-OR-LiH">
             <objects>
-                <viewControllerPlaceholder storyboardName="PhotoProcessing" id="6ct-GV-vEB" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="PhotoEditing" id="6ct-GV-vEB" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="CuH-p0-gvc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwG-H9-Zrp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

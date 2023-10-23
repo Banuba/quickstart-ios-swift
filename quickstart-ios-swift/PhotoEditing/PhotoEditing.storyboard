@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HMo-jw-2dH">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--PhotoProcessing-->
         <scene sceneID="VNc-RQ-5uY">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="cng-Vf-Mgj" userLabel="PhotoProcessing" customClass="PhotoProcessingController" customModule="quickstart_ios_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="cng-Vf-Mgj" userLabel="PhotoProcessing" customClass="PhotoEditingViewController" customModule="quickstart_ios_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ziO-Vq-nh4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,20 +39,27 @@
                                                     <action selector="selectImage:" destination="cng-Vf-Mgj" eventType="touchUpInside" id="ogK-ls-uNF"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGb-JY-UZl" userLabel="Labels&amp;SlidersStackView">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UGb-JY-UZl" userLabel="Labels&amp;SlidersStackView">
                                                 <rect key="frame" x="0.0" y="75" width="414" height="76"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaI-kP-1Be">
+                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="76"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="10" id="JIg-7N-p9A"/>
+                                                        </constraints>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-IK-KqB" userLabel="LabelsStackView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="76"/>
+                                                        <rect key="frame" x="20" y="0.0" width="31" height="76"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTI-vH-Hog" userLabel="HairLabel">
-                                                                <rect key="frame" x="0.0" y="0.0" width="31" height="45.666666666666664"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTI-vH-Hog" userLabel="HairLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="31" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Eyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgD-OR-elH" userLabel="EyesLabel">
-                                                                <rect key="frame" x="0.0" y="55.666666666666636" width="31" height="20.333333333333336"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Eyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgD-OR-elH" userLabel="EyesLabel">
+                                                                <rect key="frame" x="0.0" y="30.333333333333368" width="31" height="45.666666666666657"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -60,22 +67,29 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="m9F-Op-aeh" userLabel="SlidersStackView">
-                                                        <rect key="frame" x="31" y="0.0" width="383" height="76"/>
+                                                        <rect key="frame" x="61" y="0.0" width="333" height="76"/>
                                                         <subviews>
-                                                            <slider contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rDg-hd-CQ4" userLabel="HairSlider">
-                                                                <rect key="frame" x="-2" y="0.0" width="387" height="37"/>
+                                                            <slider contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="rDg-hd-CQ4" userLabel="HairSlider">
+                                                                <rect key="frame" x="-2" y="0.0" width="337" height="37"/>
                                                                 <connections>
                                                                     <action selector="hairValueChanged:" destination="cng-Vf-Mgj" eventType="valueChanged" id="xee-Zw-fne"/>
                                                                 </connections>
                                                             </slider>
-                                                            <slider contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-lD-YVr" userLabel="EyesSlider">
-                                                                <rect key="frame" x="-2" y="46" width="387" height="31"/>
+                                                            <slider contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-lD-YVr" userLabel="EyesSlider">
+                                                                <rect key="frame" x="-2" y="46" width="337" height="31"/>
                                                                 <connections>
                                                                     <action selector="eyesValueChanged:" destination="cng-Vf-Mgj" eventType="valueChanged" id="EAt-6q-mGZ"/>
                                                                 </connections>
                                                             </slider>
                                                         </subviews>
                                                     </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8QF-fh-3zV">
+                                                        <rect key="frame" x="404" y="0.0" width="10" height="76"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="10" id="T15-Ki-WpS"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -87,13 +101,13 @@
                         <viewLayoutGuide key="safeArea" id="2nS-Hc-XUf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="En4-qd-FIi" secondAttribute="trailing" id="UMc-ay-oc3"/>
+                            <constraint firstItem="2nS-Hc-XUf" firstAttribute="trailing" secondItem="En4-qd-FIi" secondAttribute="trailing" id="FTi-9K-tqd"/>
                             <constraint firstItem="En4-qd-FIi" firstAttribute="top" secondItem="2nS-Hc-XUf" secondAttribute="top" id="abX-jE-nd6"/>
                             <constraint firstItem="En4-qd-FIi" firstAttribute="leading" secondItem="2nS-Hc-XUf" secondAttribute="leading" id="et9-Ui-rdW"/>
-                            <constraint firstAttribute="bottom" secondItem="En4-qd-FIi" secondAttribute="bottom" id="qlW-su-3sJ"/>
+                            <constraint firstItem="2nS-Hc-XUf" firstAttribute="bottom" secondItem="En4-qd-FIi" secondAttribute="bottom" id="gKi-Oc-lPo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo Processing" id="JKX-kn-tbS">
+                    <navigationItem key="navigationItem" title="Photo Editing" id="JKX-kn-tbS">
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="xFN-cC-r4S">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
