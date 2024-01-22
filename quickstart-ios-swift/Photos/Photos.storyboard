@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xSE-bu-Dnr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xSE-bu-Dnr">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Photos-->
+        <!--PHOTOS-->
         <scene sceneID="oNx-cG-TFD">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Ljk-Lu-cBh" customClass="PhotosViewController" customModule="quickstart_ios_swift" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,26 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BeN-cb-oWW">
-                                <rect key="frame" x="0.0" y="88" width="414" height="648"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="628"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eT-Cl-cva">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-Jc-8OW">
-                                        <rect key="frame" x="151.66666666666666" y="0.0" width="110.99999999999997" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-Jc-8OW">
+                                        <rect key="frame" x="171" y="0.0" width="72" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="6bA-6a-AWm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="Open photo">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="SELECT">
+                                            <color key="titleColor" systemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="openPhoto:" destination="Ljk-Lu-cBh" eventType="touchUpInside" id="IA4-XN-qEL"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="6uW-Jc-8OW" firstAttribute="centerY" secondItem="0eT-Cl-cva" secondAttribute="centerY" id="9AN-Wl-6PV"/>
                                     <constraint firstAttribute="height" constant="44" id="B12-cM-DFo"/>
@@ -44,7 +45,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="de8-PD-5XZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0eT-Cl-cva" firstAttribute="trailing" secondItem="de8-PD-5XZ" secondAttribute="trailing" id="MXv-zy-pa1"/>
                             <constraint firstItem="BeN-cb-oWW" firstAttribute="leading" secondItem="mRV-8x-OGr" secondAttribute="leading" id="WT5-7Z-Alv"/>
@@ -54,9 +56,8 @@
                             <constraint firstItem="BeN-cb-oWW" firstAttribute="top" secondItem="0eT-Cl-cva" secondAttribute="top" constant="44" id="ry8-tQ-OYY"/>
                             <constraint firstItem="0eT-Cl-cva" firstAttribute="top" secondItem="de8-PD-5XZ" secondAttribute="top" id="yel-Ew-XY1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="de8-PD-5XZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Photos" id="jql-Fm-WYS">
+                    <navigationItem key="navigationItem" title="PHOTOS" id="jql-Fm-WYS">
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="C1a-SO-DwS">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -79,7 +80,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="o8m-aO-Kb3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ubd-UY-c5c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -92,4 +93,12 @@
             <point key="canvasLocation" x="1281" y="278"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pyi-xt-GHV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pyi-xt-GHV">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +15,7 @@
                 <navigationController modalPresentationStyle="fullScreen" id="pyi-xt-GHV" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hbY-Hg-pEl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WzS-cG-jAQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="1281" y="936"/>
         </scene>
-        <!--Video-->
+        <!--VIDEO-->
         <scene sceneID="THh-HV-4fC">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="kbU-TB-6Fd" customClass="VideoViewController" customModule="quickstart_ios_swift" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,14 +35,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZ8-gu-e0K">
-                                <rect key="frame" x="0.0" y="88" width="414" height="648"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="628"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8bi-S4-Mvo">
-                                        <rect key="frame" x="188.66666666666666" y="305.66666666666669" width="37" height="37"/>
+                                        <rect key="frame" x="188.66666666666666" y="295.66666666666669" width="37" height="37"/>
                                         <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8a-82-gtQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="648"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="628"/>
                                         <connections>
                                             <segue destination="fvS-fD-nhO" kind="embed" id="X8b-0A-dc1"/>
                                         </connections>
@@ -59,16 +59,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybt-aO-FLf">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9k-jk-mMM">
-                                        <rect key="frame" x="153.66666666666666" y="0.0" width="106.99999999999997" height="44"/>
+                                        <rect key="frame" x="171" y="0.0" width="72" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="huu-eV-J7g"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="Open video">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="SELECT">
+                                            <color key="titleColor" systemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="openVideoButtonGotTapEvent:" destination="kbU-TB-6Fd" eventType="touchUpInside" id="2Uj-rR-eIb"/>
@@ -76,7 +77,6 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="SeF-T7-qkC"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstItem="g9k-jk-mMM" firstAttribute="centerX" secondItem="ybt-aO-FLf" secondAttribute="centerX" id="KS4-AS-gpG"/>
                                     <constraint firstAttribute="height" constant="44" id="UwV-Fe-bGN"/>
@@ -96,7 +96,7 @@
                             <constraint firstItem="ybt-aO-FLf" firstAttribute="leading" secondItem="xs4-tn-n2I" secondAttribute="leading" id="s5Z-uy-WM3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Video" id="W3f-eA-XSK">
+                    <navigationItem key="navigationItem" title="VIDEO" id="W3f-eA-XSK">
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="bRp-mI-ySO">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -123,8 +123,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
