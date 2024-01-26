@@ -7,14 +7,23 @@ class PhotosViewController: UIViewController {
 
     private let imagePicker = UIImagePickerController()
     
+    // `Player` process frames from the input and render them into the outputs
     private let player = Player()
+    
+    // Input photo
     private let photo = Photo()
+    
+    // Current effect
+    private var effect: BNBEffect?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        player.use(input: photo)
-        _ = player.load(effect: "TrollGrandma", sync: true)
+        // Change render mode to manual, to exactly control when player will render
+        player.renderMode = .manual
+        
+        // Load effect from `effects` folder synchronously
+        effect = player.load(effect: "TrollGrandma", sync: true)
 
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -34,20 +43,15 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            // create the frame output with completion handler, when frame will be presented
+            // Create the frame output with completion, when frame will be rendered
             let imageOutput = Frame<UIImage>() { image in
                 guard let image = image else { return }
-                
-                // reset player outputs to stop presenting
-                // NOTE: to avoid this, `player.renderMode = .manual` can be used
-                self.player.use(outputs: [])
-                
                 DispatchQueue.main.async {
-                    // show processed image
+                    // Show processed image
                     self.galleryImage.contentMode = .scaleAspectFit
                     self.galleryImage.image = image
                     
-                    // propose to save processed image
+                    // Propose to save processed image
                     let alert = UIAlertController(title: "Photo Processed", message: "Would you like to save it in gallery?", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
@@ -57,14 +61,15 @@ extension PhotosViewController: UINavigationControllerDelegate, UIImagePickerCon
                 }
             }
             
-            // NOTE: order is important here: push image to input first, use frame output second,
-            // else previously pushed image can be processed instead
+            // Connect photo input and frame output to the player
+            player.use(input: photo)
+            player.use(outputs: [imageOutput])
             
-            // take photo for processing from the picked image
+            // Take photo for processing from the picked image
             photo.take(from: pickedImage)
             
-            // use frame output to present, completion will be fired after that
-            player.use(outputs: [imageOutput])
+            // Render frame and check the result
+            guard player.render() else { fatalError("Rendering Error") }
         }
         dismiss(animated: true, completion: nil)
     }

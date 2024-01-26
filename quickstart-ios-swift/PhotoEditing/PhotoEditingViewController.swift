@@ -13,16 +13,20 @@ class PhotoEditingViewController: UIViewController {
 
     private let imagePicker = UIImagePickerController()
     
+    private var makeup: BNBEffect?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        effectView.layoutIfNeeded()
+        
         player.effectPlayer.effectManager()?.add(self)
         player.use(input: photo, outputs: [effectView])
         
-        let makeup = player.load(effect: "Makeup")
+        // Load Makeup effect from `effects` folder
+        makeup = player.load(effect: "Makeup")
         
-        // initialize Makeup effect with the Hair.color and the Eyes.color
-        makeup?.evalJs("Hair.color('1.0 0.0 0.0 0.5'); Eyes.color('1.0 0.0 0.0 0.5');", resultCallback: nil)
+        // Initialize Makeup effect with the Hair.color and the Eyes.color
+        makeup?.evalJs("Hair.color('1.0 0.0 0.0 0.5');", resultCallback: nil)
+        makeup?.evalJs("Eyes.color('1.0 0.0 0.0 0.5');", resultCallback: nil)
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -44,11 +48,11 @@ class PhotoEditingViewController: UIViewController {
     }
     
     @IBAction func hairValueChanged(_ sender: UISlider) {
-        player.effect?.evalJs("Hair.color('1.0 \(sender.value / 10) 0.0 0.5')", resultCallback: nil)
+        makeup?.evalJs("Hair.color('1.0 \(sender.value / 10) 0.0 0.5')", resultCallback: nil)
     }
     
     @IBAction func eyesValueChanged(_ sender: UISlider) {
-        player.effect?.evalJs("Eyes.color('1.0 \(sender.value / 10) 0.0 0.5')", resultCallback: nil)
+        makeup?.evalJs("Eyes.color('1.0 \(sender.value / 10) 0.0 0.5')", resultCallback: nil)
     }
     
     @IBAction func closeCamera(_ sender: UIBarButtonItem) {

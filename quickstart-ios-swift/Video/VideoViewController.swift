@@ -25,11 +25,11 @@ class VideoViewController: UIViewController {
         
         let pixelBufferOutput = PixelBuffer(onPresent: { [weak self] buffer in
             guard let buffer = buffer else { return }
-            // save last processed pixel buffer
+            // Save last processed pixel buffer
             self?.lastPixelBuffer = buffer
         })
         
-        // use manual render mode to control when pixel buffer should be presented
+        // Use manual render mode to control when pixel buffer should be presented
         player.renderMode = .manual
         player.use(input: stream, outputs: [pixelBufferOutput])
         _ = player.load(effect: "TrollGrandma", sync: true)
@@ -93,12 +93,12 @@ extension VideoViewController: UIImagePickerControllerDelegate, UINavigationCont
 
 extension VideoViewController: VideoProcessingDelegate {
     func videoProcessingNeedsSample(for pixelBuffer: CVPixelBuffer, presentationTime: CMTime) -> CVPixelBuffer {
-        // push input pixel buffer for processing
+        // Push input pixel buffer for processing
         stream.push(pixelBuffer: pixelBuffer)
         
-        // process input pixel buffer and present result manually
+        // Process input pixel buffer and present result manually
         // NOTE: lastPixelBuffer will be filled during presentation inside the render call (see viewDidLoad)
-        _ = player.render()
+        guard player.render() else { fatalError("Rendering Error") }
         
         guard let outPixelBuffer = lastPixelBuffer else { fatalError("pixel buffer is nil") }
         return outPixelBuffer
